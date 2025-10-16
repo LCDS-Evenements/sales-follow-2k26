@@ -5,7 +5,7 @@ export default eslintConfig(
     typescript: { tsconfigPath: "./tsconfig.json" },
   },
   {
-    ignores: ["**/*.gtype.ts"],
+    ignores: ["**/*.gtype.ts", "src/react/ui"],
   },
   {
     rules: {
