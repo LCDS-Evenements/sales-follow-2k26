@@ -22,11 +22,9 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system">
-          <main>
-            <Toaster richColors />
+          <Toaster richColors />
 
-            {children}
-          </main>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,12 @@
-const DashboardLayout = () => {
+import type { Component, PropsWithChildren } from "#/utils/react";
+import { Header } from "#/react/components/header";
+
+const DashboardLayout: Component<PropsWithChildren> = ({ children }) => {
   return (
-    <div>DashboardLayout</div>
+    <main className="min-h-screen font-one">
+      <Header />
+      {children}
+    </main>
   );
 };
 
