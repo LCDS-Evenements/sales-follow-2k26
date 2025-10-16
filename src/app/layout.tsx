@@ -1,7 +1,7 @@
 import type { Component, PropsWithChildren } from "#/utils/react";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "#/react/providers/theme-provider";
-import { Toaster } from "#/react/ui/sonner";
+import { Toaster } from "#/react/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {

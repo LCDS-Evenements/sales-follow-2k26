@@ -1,7 +1,7 @@
 import type { Component } from "#/utils/react";
-import { RangePicker } from "../range-picker/range-picker";
-import { Badge } from "#/react/ui/badge";
-import { Button } from "#/react/ui/button";
+import { Profile } from "#/react/components/profile";
+import { RangePicker } from "#/react/components/range-picker";
+import { Badge, Button } from "#/react/ui";
 import { BellIcon, DownloadIcon, MusicIcon } from "lucide-react";
 
 export const Header: Component = () => {
@@ -36,6 +36,8 @@ export const Header: Component = () => {
 
               Export data
             </Button>
+
+            <Profile className="ml-6" />
           </div>
         </div>
       </div>
