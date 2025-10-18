@@ -2,7 +2,6 @@
 
 import type { ProfileProps } from "./profile.type";
 import type { Component } from "#/utils/react";
-import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu";
 import {
   Avatar,
   AvatarFallback,
@@ -13,6 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuSub,
+  DropdownMenuGroup,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
@@ -27,7 +27,7 @@ export const Profile: Component<ProfileProps> = ({ className }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className={className}>
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage src="https://hcampos.fr/pictures/me.webp" />
 
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
@@ -38,7 +38,7 @@ export const Profile: Component<ProfileProps> = ({ className }) => {
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://hcampos.fr/pictures/me.webp" />
 
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
@@ -53,7 +53,7 @@ export const Profile: Component<ProfileProps> = ({ className }) => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuGroup className="*:cursor-pointer">
+        <DropdownMenuGroup>
           <DropdownMenuItem>
             <SettingsIcon />
 
@@ -68,7 +68,7 @@ export const Profile: Component<ProfileProps> = ({ className }) => {
             </DropdownMenuSubTrigger>
 
             <DropdownMenuSubContent>
-              <DropdownMenuGroup className="*:cursor-pointer">
+              <DropdownMenuGroup>
                 <DropdownMenuItem onClick={() => setTheme("light")}>
                   <SunIcon />
 

@@ -5,7 +5,10 @@ const DashboardLayout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <main className="min-h-screen font-one">
       <Header />
-      {children}
+
+      <div className="container mx-auto py-6 space-y-4">
+        {children}
+      </div>
     </main>
   );
 };

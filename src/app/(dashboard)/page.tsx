@@ -1,10 +1,11 @@
 import type { Component } from "#/utils/react";
+import EventDetails from "./_components/event-details/event-details";
 
 const Dashboard: Component = () => {
-  console.log("trigger workflow");
-
   return (
-    <div />
+    <div>
+      <EventDetails />
+    </div>
   );
 };
 
