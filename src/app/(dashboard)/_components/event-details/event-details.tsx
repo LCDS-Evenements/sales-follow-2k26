@@ -1,51 +1,11 @@
-"use client";
-
-import type { TimeRemaining } from "./event-details.type";
 import type { Component } from "#/utils/react";
+import { TimeRemaining } from "./time-remaining";
 import { Card } from "#/react/ui";
 import { day } from "#/utils/day";
-import { ArrowRightIcon, CalendarIcon, ClockIcon, PinIcon } from "lucide-react";
+import { ArrowRightIcon, CalendarIcon, PinIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const EventDetails: Component = () => {
-  const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const calculateTimeRemaining = () => {
-      // Get the current date:
-      const now = day();
-
-      // Set the event date:
-      const eventDate = day("2026-06-12");
-
-      // Get the difference between the current date and the event date in seconds:
-      const diff = eventDate.diff(now, "second");
-
-      if (diff <= 0) {
-        setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      // Set the units into each const:
-      const days = Math.floor(diff / (24 * 60 * 60));
-      const hours = Math.floor((diff % (24 * 60 * 60)) / (60 * 60));
-      const minutes = Math.floor((diff % (60 * 60)) / 60);
-      const seconds = diff % 60;
-
-      setTimeRemaining({ days, hours, minutes, seconds });
-    };
-
-    // Execute function:
-    calculateTimeRemaining();
-
-    // Exectute the function with interval each seconds:
-    const interval = setInterval(calculateTimeRemaining, 1000);
-
-    // Then clear the interval:
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="grid grid-cols-3 gap-2">
       <Card className="p-0 rounded-lg px-2 py-1.5">
@@ -87,43 +47,7 @@ const EventDetails: Component = () => {
         </div>
       </Card>
 
-      <Card className="p-0 rounded-lg px-2 py-1.5">
-        <div className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-2">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary/20">
-              <ClockIcon size={16} className="text-primary" />
-            </div>
-
-            <p className="text-sm font-semibold">Time remaining</p>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
-              <p className="text-xs font-semibold font-mono">{timeRemaining.days}</p>
-
-              <p className="text-xs text-foreground">DAYS</p>
-            </div>
-
-            <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
-              <p className="text-xs font-semibold font-mono">{timeRemaining.hours}</p>
-
-              <p className="text-xs text-foreground">HRS</p>
-            </div>
-
-            <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
-              <p className="text-xs font-semibold font-mono">{timeRemaining.minutes}</p>
-
-              <p className="text-xs text-foreground">MINS</p>
-            </div>
-
-            <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
-              <p className="text-xs font-semibold font-mono">{timeRemaining.seconds}</p>
-
-              <p className="text-xs text-foreground">SECS</p>
-            </div>
-          </div>
-        </div>
-      </Card>
+      <TimeRemaining date={day("2026-06-12").toDate()} />
     </div>
   );
 };
