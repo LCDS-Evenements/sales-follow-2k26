@@ -4,7 +4,8 @@ import type { StateType, TimeRemainingProps, TimeRemainingType } from "./time-re
 import type { Component } from "#/utils/react";
 import { Card } from "#/react/ui";
 import { day } from "#/utils/day";
-import { ClockIcon } from "lucide-react";
+import { range } from "#/utils/effect/array";
+import { CheckIcon, ClockIcon, PartyPopperIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
@@ -51,14 +52,70 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
 
     // Then clear the interval:
     return () => clearInterval(interval);
-  }, []);
+  }, [date]);
 
   if (state === "after") return (
-    <>after</>
+    <Card className="p-0 rounded-lg px-2 py-1.5 border-border border-dashed border-amber-200 relative overflow-hidden">
+      <div className="flex items-center justify-between h-full">
+        <div className="flex items-center gap-2">
+          <div className="flex size-7 items-center justify-center rounded-md bg-amber-500/20">
+            <CheckIcon size={16} className="text-amber-500" />
+          </div>
+
+          <p className="text-sm font-semibold">Event ended</p>
+        </div>
+
+        <div className="text-right">
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">ENDED</p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-2 right-2 w-20 h-20 rounded-full bg-muted-foreground blur-xl" />
+        <div className="absolute bottom-2 left-2 w-16 h-16 rounded-full bg-muted-foreground blur-xl" />
+      </div>
+    </Card>
   );
 
   if (state === "live") return (
-    <>live</>
+    <Card className="p-0 rounded-lg px-2 py-1.5 border-green-500 bg-green-500/10 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {range(20).map((index) => (
+          <div
+            key={index}
+            className="absolute w-2 h-2 rounded-full animate-confetti-fall"
+            style={{
+              left: `${String(Math.random() * 100)}%`,
+              animationDelay: `${String(Math.random() * 3)}s`,
+              animationDuration: `${String(2 + Math.random() * 2)}s`,
+              backgroundColor: ["#ef4444", "#f59e0b", "#10b981", "#3b82f6", "#8b5cf6", "#ec4899"][Math.floor(Math.random() * 6)],
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between h-full">
+        <div className="flex items-center gap-2">
+          <div className="flex size-7 items-center justify-center rounded-md bg-green-500/20">
+            <PartyPopperIcon size={16} className="text-green-500" />
+          </div>
+
+          <p className="text-sm font-semibold">Event is LIVE</p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <div className="relative flex items-center">
+            <div className="size-2 rounded-full bg-green-500 animate-ping absolute" />
+
+            <div className="size-2 rounded-full bg-green-500 relative" />
+          </div>
+
+          <p className="text-xs font-mono text-green-500 uppercase tracking-wider">LIVE NOW</p>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent animate-shimmer" />
+    </Card>
   );
 
   return (

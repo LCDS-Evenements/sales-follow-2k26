@@ -2,6 +2,7 @@ import type { Component } from "#/utils/react";
 import { TimeRemaining } from "./time-remaining";
 import { Card } from "#/react/ui";
 import { day } from "#/utils/day";
+import { envClient } from "#/utils/env/client";
 import { ArrowRightIcon, CalendarIcon, PinIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -47,7 +48,7 @@ const EventDetails: Component = () => {
         </div>
       </Card>
 
-      <TimeRemaining date={day("2026-06-12").toDate()} />
+      <TimeRemaining date={day(envClient.NEXT_PUBLIC_EVENT_DATE).toDate()} />
     </div>
   );
 };
