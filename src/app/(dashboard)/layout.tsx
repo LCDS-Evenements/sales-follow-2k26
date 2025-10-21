@@ -6,7 +6,7 @@ const DashboardLayout: Component<PropsWithChildren> = ({ children }) => {
     <main className="min-h-screen font-one">
       <Header />
 
-      <div className="container mx-auto py-4 space-y-2">
+      <div className="container mx-auto py-4 space-y-4">
         {children}
       </div>
     </main>
