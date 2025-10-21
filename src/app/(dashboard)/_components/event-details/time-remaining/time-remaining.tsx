@@ -55,7 +55,7 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
   }, [date]);
 
   if (state === "after") return (
-    <Card className="p-0 rounded-lg px-2 py-1.5 border-border border-dashed border-amber-200 relative overflow-hidden">
+    <Card className="p-0 rounded-lg px-2 py-1.5 border-dashed border-amber-200 bg-amber-500/10 relative overflow-hidden">
       <div className="flex items-center justify-between h-full">
         <div className="flex items-center gap-2">
           <div className="flex size-7 items-center justify-center rounded-md bg-amber-500/20">
@@ -66,7 +66,7 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
         </div>
 
         <div className="text-right">
-          <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">ENDED</p>
+          <p className="text-xs font-mono text-amber-500 uppercase tracking-wider">ENDED</p>
         </div>
       </div>
 
