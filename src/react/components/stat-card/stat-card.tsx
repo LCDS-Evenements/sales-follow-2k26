@@ -37,6 +37,8 @@ export const StatCard: Component<StatCardProps> = ({ label, icon, value, change,
                     +
 
                     {change}
+
+                    %
                   </>
                 );
               }
@@ -46,6 +48,8 @@ export const StatCard: Component<StatCardProps> = ({ label, icon, value, change,
                   -
 
                   {change}
+
+                  %
                 </>
               );
             })}
