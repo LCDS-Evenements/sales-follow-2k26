@@ -10,3 +10,12 @@ export type StatCardProps = {
   loading?: boolean;
   error?: boolean;
 };
+
+export type StatCardSkeletonProps = {
+  label: string;
+  icon: LucideIcon;
+};
+
+export type StatCardErrorProps = {
+  label: string;
+};
