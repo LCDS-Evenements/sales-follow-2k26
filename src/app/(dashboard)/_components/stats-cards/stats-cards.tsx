@@ -40,7 +40,7 @@ const samples: StatCardProps[] = [
 
 export const StatsCards: Component = () => {
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-4 gap-4">
       {samples.map((sample) => (
         <StatCard
           key={sample.label}
