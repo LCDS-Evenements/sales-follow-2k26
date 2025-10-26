@@ -78,7 +78,7 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
   );
 
   if (state === "live") return (
-    <Card className="p-0 rounded-lg px-2 py-1.5 border-green-500 bg-green-500/10 relative overflow-hidden">
+    <Card className="p-0 rounded-lg px-2 py-1.5 border-green-700 bg-green-700/10 dark:border-green-300 dark:bg-green-300/10 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {range(20).map((index) => (
           <div
@@ -96,8 +96,8 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
 
       <div className="flex items-center justify-between h-full">
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-green-500/20">
-            <PartyPopperIcon size={16} className="text-green-500" />
+          <div className="flex size-7 items-center justify-center rounded-md bg-green-700/20 dark:bg-green-300/20">
+            <PartyPopperIcon size={16} className="text-green-700 dark:text-green-300" />
           </div>
 
           <p className="text-sm font-semibold">Event is LIVE</p>
@@ -105,16 +105,16 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
 
         <div className="flex items-center gap-2">
           <div className="relative flex items-center">
-            <div className="size-2 rounded-full bg-green-500 animate-ping absolute" />
+            <div className="size-2 rounded-full bg-green-700 dark:bg-green-300 animate-ping absolute" />
 
-            <div className="size-2 rounded-full bg-green-500 relative" />
+            <div className="size-2 rounded-full bg-green-700 dark:bg-green-300 relative" />
           </div>
 
-          <p className="text-xs font-mono text-green-500 uppercase tracking-wider">LIVE NOW</p>
+          <p className="text-xs font-mono text-green-700 dark:text-green-300 uppercase tracking-wider">LIVE NOW</p>
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent animate-shimmer" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-700/20 dark:via-green-300/20 to-transparent animate-shimmer" />
     </Card>
   );
 

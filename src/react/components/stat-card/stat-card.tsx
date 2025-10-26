@@ -23,10 +23,10 @@ export const StatCard: Component<StatCardProps> = ({ label, icon, value, change,
         <CardAction className="flex items-center gap-2">
           {run(() => {
             if (trend === "up") {
-              return <TrendingUpIcon size={18} className="text-green-500" />;
+              return <TrendingUpIcon size={18} className="dark:text-green-300 text-green-700" />;
             }
 
-            return <TrendingDownIcon size={18} className="text-red-500" />;
+            return <TrendingDownIcon size={18} className="text-destructive" />;
           })}
 
           <span className="text-sm font-semibold font-mono">

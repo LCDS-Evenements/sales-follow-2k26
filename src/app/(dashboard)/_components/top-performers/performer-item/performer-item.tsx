@@ -39,7 +39,7 @@ export const PerformerItem: Component<PerformerItemProps> = ({ label, change, ra
         {run(() => {
           if (trend === "up") {
             return (
-              <Badge variant="secondary" className="mt-1 gap-1 text-green-500 border-green-500 font-mono">
+              <Badge variant="secondary" className="mt-1 gap-1 dark:text-green-300 dark:border-green-300 text-green-700 border-green-700 font-mono">
                 <TrendingUpIcon className="h-3 w-3" />
 
                 {change}
@@ -50,7 +50,7 @@ export const PerformerItem: Component<PerformerItemProps> = ({ label, change, ra
           }
 
           return (
-            <Badge variant="secondary" className="mt-1 gap-1 text-red-500 border-red-500 font-mono">
+            <Badge variant="secondary" className="mt-1 gap-1 text-destructive border-destructive font-mono">
               <TrendingDownIcon className="h-3 w-3" />
 
               -
