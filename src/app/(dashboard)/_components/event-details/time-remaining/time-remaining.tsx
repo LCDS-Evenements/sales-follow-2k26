@@ -114,7 +114,7 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-700/20 dark:via-green-300/20 to-transparent animate-shimmer" />
+      <div className="absolute inset-0 bg-linear-to-r from-transparent via-green-700/20 dark:via-green-300/20 to-transparent animate-shimmer" />
     </Card>
   );
 
