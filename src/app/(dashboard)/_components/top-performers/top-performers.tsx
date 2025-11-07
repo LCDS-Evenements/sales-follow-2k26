@@ -7,7 +7,7 @@ import { CrownIcon } from "lucide-react";
 const samples: PerformerItemProps[] = [
   {
     label: "Regular - Pass Samedi",
-    value: 110000,
+    amount: 110000,
     change: 12.5,
     trend: "up",
     rank: 1,
@@ -15,7 +15,7 @@ const samples: PerformerItemProps[] = [
   },
   {
     label: "Late - Pass 2 Jours",
-    value: 81000,
+    amount: 81000,
     change: 8.2,
     trend: "down",
     rank: 2,
@@ -23,7 +23,7 @@ const samples: PerformerItemProps[] = [
   },
   {
     label: "Early - Pass Vendredi",
-    value: 72000,
+    amount: 72000,
     change: 15.3,
     trend: "up",
     rank: 3,
@@ -31,7 +31,7 @@ const samples: PerformerItemProps[] = [
   },
   {
     label: "Early - Pass 2 Jours",
-    value: 40000,
+    amount: 40000,
     change: 4.1,
     trend: "down",
     rank: 4,
@@ -39,7 +39,7 @@ const samples: PerformerItemProps[] = [
   },
   {
     label: "Regular - Pass Vendredi",
-    value: 24000,
+    amount: 24000,
     change: 4.1,
     trend: "down",
     rank: 5,
@@ -69,7 +69,7 @@ export const TopPerformers: Component = () => {
             change={performerItem.change}
             trend={performerItem.trend}
             unitsSold={performerItem.unitsSold}
-            value={performerItem.value}
+            amount={performerItem.amount}
           />
         ))}
       </CardContent>

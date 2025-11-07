@@ -4,7 +4,7 @@ import { Badge, Item, ItemActions, ItemContent, ItemDescription, ItemTitle } fro
 import { run } from "#/utils/effect/run";
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 
-export const PerformerItem: Component<PerformerItemProps> = ({ label, change, rank, trend, unitsSold, value }) => {
+export const PerformerItem: Component<PerformerItemProps> = ({ label, change, rank, trend, unitsSold, amount }) => {
   return (
     <Item variant="outline" size="sm" className="bg-background rounded-lg">
       <div className="size-10 rounded-md bg-primary/20 flex items-center justify-center">
@@ -29,7 +29,7 @@ export const PerformerItem: Component<PerformerItemProps> = ({ label, change, ra
 
       <ItemActions className="flex flex-col items-end gap-0">
         <p className="font-bold text-base text-foreground font-mono">
-          {value}
+          {amount}
 
           {" "}
 

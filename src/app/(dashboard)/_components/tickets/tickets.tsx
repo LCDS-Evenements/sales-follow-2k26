@@ -144,7 +144,7 @@ export const Tickets = () => {
 
               <DropdownMenuSeparator />
 
-              <DropdownMenuCheckboxItem checked>Early Bird</DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem checked>Early</DropdownMenuCheckboxItem>
 
               <DropdownMenuCheckboxItem checked>Regular</DropdownMenuCheckboxItem>
 
