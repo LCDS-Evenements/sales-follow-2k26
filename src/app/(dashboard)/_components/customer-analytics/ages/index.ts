@@ -1,0 +1,1 @@
+export { Ages } from "./ages";

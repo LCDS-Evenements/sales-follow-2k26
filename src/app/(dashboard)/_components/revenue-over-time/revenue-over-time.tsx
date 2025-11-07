@@ -60,76 +60,36 @@ export const RevenueOverTime: Component = () => {
             }}
           >
             <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value: string) => value.slice(0, 3)}
-            />
+
+            <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value: string) => value.slice(0, 3)} />
+
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+
             <defs>
               <linearGradient id="fillEarly" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-early)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-early)"
-                  stopOpacity={0.1}
-                />
+                <stop offset="5%" stopColor="var(--color-early)" stopOpacity={0.8} />
+
+                <stop offset="95%" stopColor="var(--color-early)" stopOpacity={0.1} />
               </linearGradient>
+
               <linearGradient id="fillRegular" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-regular)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-regular)"
-                  stopOpacity={0.1}
-                />
+                <stop offset="5%" stopColor="var(--color-regular)" stopOpacity={0.8} />
+
+                <stop offset="95%" stopColor="var(--color-regular)" stopOpacity={0.1} />
               </linearGradient>
+
               <linearGradient id="fillLate" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-late)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-late)"
-                  stopOpacity={0.1}
-                />
+                <stop offset="5%" stopColor="var(--color-late)" stopOpacity={0.8} />
+
+                <stop offset="95%" stopColor="var(--color-late)" stopOpacity={0.1} />
               </linearGradient>
             </defs>
-            <Area
-              dataKey="late"
-              type="natural"
-              fill="url(#fillLate)"
-              fillOpacity={0.4}
-              stroke="var(--color-late)"
-              stackId="a"
-            />
-            <Area
-              dataKey="regular"
-              type="natural"
-              fill="url(#fillRegular)"
-              fillOpacity={0.4}
-              stroke="var(--color-regular)"
-              stackId="a"
-            />
-            <Area
-              dataKey="early"
-              type="natural"
-              fill="url(#fillEarly)"
-              fillOpacity={0.4}
-              stroke="var(--color-early)"
-              stackId="a"
-            />
+
+            <Area dataKey="late" type="natural" fill="url(#fillLate)" fillOpacity={0.4} stroke="var(--color-late)" stackId="a" />
+
+            <Area dataKey="regular" type="natural" fill="url(#fillRegular)" fillOpacity={0.4} stroke="var(--color-regular)" stackId="a" />
+
+            <Area dataKey="early" type="natural" fill="url(#fillEarly)" fillOpacity={0.4} stroke="var(--color-early)" stackId="a" />
           </AreaChart>
         </ChartContainer>
       </CardContent>

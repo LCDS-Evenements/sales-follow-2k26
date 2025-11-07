@@ -1,4 +1,5 @@
 import type { Component } from "#/utils/react";
+import { CustomerAnalytics } from "./_components/customer-analytics";
 import EventDetails from "./_components/event-details/event-details";
 import { RevenueOverTime } from "./_components/revenue-over-time";
 import { StatsCards } from "./_components/stats-cards";
@@ -19,6 +20,8 @@ const Dashboard: Component = () => {
       </div>
 
       <Tickets />
+
+      <CustomerAnalytics />
     </>
   );
 };
