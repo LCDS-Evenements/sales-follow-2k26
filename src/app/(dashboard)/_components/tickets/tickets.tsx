@@ -1,7 +1,23 @@
+"use client";
+
 import type { TicketCardProps } from "#/react/components/ticket-card/ticket-card.type";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { TicketCard } from "#/react/components/ticket-card";
-import { Badge, Button, InputGroup, InputGroupAddon, InputGroupInput } from "#/react/ui";
+import { useDebounce } from "#/react/hooks/debounce";
+import {
+  Badge,
+  Button,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "#/react/ui";
 import { SearchIcon } from "lucide-react";
+import { useState } from "react";
 
 const samples: TicketCardProps[] = [
   {
@@ -97,6 +113,13 @@ const samples: TicketCardProps[] = [
 ];
 
 export const Tickets = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const search = useDebounce(searchQuery, 200);
+
+  const filtered = samples.filter((ticket) => ticket.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -104,14 +127,31 @@ export const Tickets = () => {
 
         <div className="flex items-center gap-4">
           <InputGroup>
-            <InputGroupInput placeholder="Search..." />
+            <InputGroupInput placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
 
             <InputGroupAddon>
               <SearchIcon />
             </InputGroupAddon>
           </InputGroup>
 
-          <Button variant="outline">Filter (3)</Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">Filter (3)</Button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Category</DropdownMenuLabel>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuCheckboxItem checked>Early Bird</DropdownMenuCheckboxItem>
+
+              <DropdownMenuCheckboxItem checked>Regular</DropdownMenuCheckboxItem>
+
+              <DropdownMenuCheckboxItem checked>Late</DropdownMenuCheckboxItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
         </div>
 
         <div className="flex items-center gap-2">
@@ -136,7 +176,7 @@ export const Tickets = () => {
       </div>
 
       <div className="grid grid-cols-4 gap-4 mt-4">
-        {samples.map((sample) => (
+        {filtered.map((sample) => (
           <TicketCard
             key={sample.name}
             name={sample.name}
