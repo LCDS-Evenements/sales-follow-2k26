@@ -7,27 +7,27 @@ import { CheckCircleIcon, ShoppingBagIcon, TriangleAlertIcon } from "lucide-reac
 
 export const Notification: Component<NotificationProps> = ({ ago, label, type }) => {
   return (
-    <Item variant="outline" size="sm" className="bg-background rounded-lg">
+    <Item variant="outline" size="sm" className="bg-background rounded-lg py-2 px-3 sm:py-3 sm:px-4">
       {run(() => {
         if (type === "sold") {
           return (
-            <div className="size-10 rounded-md bg-green-700/20 dark:bg-green-300/20 flex items-center justify-center">
-              <ShoppingBagIcon size={22} className="text-green-700 dark:text-green-300" />
+            <div className="size-8 sm:size-10 rounded-md bg-green-700/20 dark:bg-green-300/20 flex items-center justify-center">
+              <ShoppingBagIcon className="text-green-700 dark:text-green-300 size-4 sm:size-6" />
             </div>
           );
         }
 
         if (type === "limited-stock") {
           return (
-            <div className="size-10 rounded-md bg-amber-700/20 dark:bg-amber-300/20 flex items-center justify-center">
-              <TriangleAlertIcon size={22} className="text-amber-700 dark:text-amber-300" />
+            <div className="size-8 sm:size-10 rounded-md bg-amber-700/20 dark:bg-amber-300/20 flex items-center justify-center">
+              <TriangleAlertIcon className="text-amber-700 dark:text-amber-300 size-4 sm:size-6" />
             </div>
           );
         }
 
         return (
-          <div className="size-10 rounded-md bg-primary/20 flex items-center justify-center">
-            <CheckCircleIcon size={22} className="text-primary" />
+          <div className="size-8 sm:size-10 rounded-md bg-primary/20 flex items-center justify-center">
+            <CheckCircleIcon className="text-primary size-4 sm:size-6" />
           </div>
         );
       })}

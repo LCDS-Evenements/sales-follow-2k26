@@ -15,8 +15,8 @@ export const TicketCard: Component<TicketCardProps> = ({ name, category, value, 
   };
 
   return (
-    <Card className={cn("w-full max-w-sm gap-4", state === "coming-soon" && "opacity-50")}>
-      <CardHeader>
+    <Card className={cn("w-full gap-4 py-4 md:py-6", state === "coming-soon" && "opacity-50")}>
+      <CardHeader className="px-4 md:px-6">
         <div className={cn("flex size-9 items-center justify-center rounded-lg", colorVariants[color].bg)}>
           <TicketIcon size={22} className={cn(colorVariants[color].text)} />
         </div>
@@ -63,13 +63,13 @@ export const TicketCard: Component<TicketCardProps> = ({ name, category, value, 
         </CardAction>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-4 md:px-6">
         <p className="font-semibold text-lg">{name}</p>
 
         {category && <span className="text-sm text-muted-foreground">{category}</span>}
       </CardContent>
 
-      <CardFooter className="flex-col items-start gap-1">
+      <CardFooter className="flex-col items-start gap-1 px-4 md:px-6">
         <div className="flex items-center justify-between w-full">
           <p className="text-muted-foreground">Sales</p>
 

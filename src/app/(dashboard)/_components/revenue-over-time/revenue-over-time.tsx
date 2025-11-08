@@ -38,8 +38,8 @@ export const RevenueOverTime: Component = () => {
   } satisfies ChartConfig;
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <CardTitle>Revenue over time</CardTitle>
 
         <CardDescription>Cumulative revenue by ticket category</CardDescription>
@@ -49,7 +49,7 @@ export const RevenueOverTime: Component = () => {
         </CardAction>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-4 md:px-6">
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer

@@ -107,8 +107,8 @@ const samples: ActivityProps[] = [
 
 export const RecentActivity: Component = () => {
   return (
-    <Card>
-      <CardHeader>
+    <Card className="py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <CardTitle>Recent activity</CardTitle>
 
         <CardDescription>Latest sales and activity</CardDescription>
@@ -118,7 +118,9 @@ export const RecentActivity: Component = () => {
         </CardAction>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-2 max-h-[450px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <CardContent
+        className="flex flex-col gap-2 max-h-[450px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4 md:px-6"
+      >
         {samples.map((sample) => (
           <Activity
             key={Math.random().toString(36).substring(2, 11)}

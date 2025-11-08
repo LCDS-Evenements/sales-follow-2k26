@@ -56,8 +56,8 @@ export const LiveNotifications: Component = () => {
   }, []);
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <div className="flex flex-row gap-3">
           <div className="flex size-9 items-center justify-center rounded-lg bg-primary/20">
             <BellIcon size={22} className="text-primary" />
@@ -79,7 +79,9 @@ export const LiveNotifications: Component = () => {
         </CardAction>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-2 max-h-[450px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <CardContent
+        className="flex flex-col gap-2 max-h-[450px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4 md:px-6"
+      >
         {notifications.map((notification) => (
           <Notification key={Math.random().toString(36).substring(2, 11)} ago={notification.ago} label={notification.label} type={notification.type} />
         ))}

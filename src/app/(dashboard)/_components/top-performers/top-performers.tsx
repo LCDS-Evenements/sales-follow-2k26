@@ -49,8 +49,8 @@ const samples: PerformerItemProps[] = [
 
 export const TopPerformers: Component = () => {
   return (
-    <Card>
-      <CardHeader>
+    <Card className="py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <CardTitle>Top performers</CardTitle>
 
         <CardDescription>Best selling tickets this period</CardDescription>
@@ -60,7 +60,7 @@ export const TopPerformers: Component = () => {
         </CardAction>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-2">
+      <CardContent className="flex flex-col gap-2 px-4 md:px-6">
         {samples.map((performerItem, index) => (
           <PerformerItem
             key={performerItem.label}

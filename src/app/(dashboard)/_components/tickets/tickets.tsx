@@ -121,13 +121,13 @@ export const Tickets = () => {
   );
 
   return (
-    <div>
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col items-start gap-4">
+      <div className="flex justify-between items-center w-full">
         <p className="leading-none font-semibold">Tickets sales</p>
 
         <div className="flex items-center gap-4">
           <InputGroup>
-            <InputGroupInput placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            <InputGroupInput size={10} placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
 
             <InputGroupAddon>
               <SearchIcon />
@@ -151,10 +151,9 @@ export const Tickets = () => {
               <DropdownMenuCheckboxItem checked>Late</DropdownMenuCheckboxItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="items-center gap-2 hidden sm:flex">
           <Badge variant="outline" className="gap-1">
             <div className="h-2 w-2 rounded-full bg-chart-1" />
 
@@ -175,7 +174,27 @@ export const Tickets = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+      <div className="items-center gap-2 flex justify-end w-full sm:hidden">
+        <Badge variant="outline" className="gap-1">
+          <div className="h-2 w-2 rounded-full bg-chart-1" />
+
+          Early Bird
+        </Badge>
+
+        <Badge variant="outline" className="gap-1">
+          <div className="h-2 w-2 rounded-full bg-chart-2" />
+
+          Regular
+        </Badge>
+
+        <Badge variant="outline" className="gap-1">
+          <div className="h-2 w-2 rounded-full bg-chart-3" />
+
+          Late
+        </Badge>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
         {filtered.map((sample) => (
           <TicketCard
             key={sample.name}

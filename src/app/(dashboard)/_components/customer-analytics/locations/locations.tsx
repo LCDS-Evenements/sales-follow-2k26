@@ -5,8 +5,8 @@ import { PinIcon } from "lucide-react";
 
 export const Locations: Component<LocationsProps> = ({ locations }) => {
   return (
-    <Card>
-      <CardHeader className="flex flex-row gap-3">
+    <Card className="py-4 md:py-6">
+      <CardHeader className="flex flex-row gap-3 px-4 md:px-6">
         <div className="flex size-9 items-center justify-center rounded-lg bg-primary/20">
           <PinIcon size={22} className="text-primary" />
         </div>
@@ -18,7 +18,7 @@ export const Locations: Component<LocationsProps> = ({ locations }) => {
         </div>
       </CardHeader>
 
-      <CardContent className="flex items-center gap-2 flex-col">
+      <CardContent className="flex items-center gap-2 flex-col px-4 md:px-6">
         {locations.map((location) => (
           <div className="w-full flex flex-col gap-1" key={location.label}>
             <div className="flex items-center justify-between">

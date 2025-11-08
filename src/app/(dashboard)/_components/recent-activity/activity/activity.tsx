@@ -7,19 +7,19 @@ import { ShoppingBasketIcon, SparklesIcon } from "lucide-react";
 
 export const Activity: Component<ActivityProps> = ({ ago, label, type, amount, customer }) => {
   return (
-    <Item variant="outline" size="sm" className="bg-background rounded-lg">
-      <div className="size-10 rounded-md bg-primary/20 flex items-center justify-center">
+    <Item variant="outline" size="sm" className="bg-background rounded-lg py-2 px-3 sm:py-3 sm:px-4">
+      <div className="size-8 sm:size-10 rounded-md bg-primary/20 flex items-center justify-center">
         {run(() => {
           if (type === "purchased") {
-            return <ShoppingBasketIcon size={22} className="text-primary" />;
+            return <ShoppingBasketIcon className="text-primary size-4 sm:size-6" />;
           }
 
-          return <SparklesIcon size={22} className="text-primary" />;
+          return <SparklesIcon className="text-primary size-4 sm:size-6" />;
         })}
       </div>
 
       <ItemContent className="gap-0.5">
-        <ItemTitle className="font-semibold">
+        <ItemTitle className="font-semibold max-w-72 truncate">
           [
           {label}
           ]

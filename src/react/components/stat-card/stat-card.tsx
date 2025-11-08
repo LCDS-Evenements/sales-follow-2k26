@@ -14,8 +14,8 @@ export const StatCard: Component<StatCardProps> = ({ label, icon, value, change,
   if (error) return <StatCardError label={label} />;
 
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
+    <Card className="w-full py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <div className="flex size-9 items-center justify-center rounded-lg bg-primary/20">
           <CustomIcon size={22} className="text-primary" />
         </div>
@@ -57,7 +57,7 @@ export const StatCard: Component<StatCardProps> = ({ label, icon, value, change,
         </CardAction>
       </CardHeader>
 
-      <CardFooter className="flex-col items-start gap-1">
+      <CardFooter className="flex-col items-start gap-1 px-4 md:px-6">
         <p className="text-sm text-muted-foreground">{label}</p>
 
         <p className="text-3xl font-bold font-mono text-foreground">

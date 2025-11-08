@@ -5,7 +5,7 @@ import type { Component } from "#/utils/react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, ChartContainer, ChartTooltip, ChartTooltipContent } from "#/react/ui";
 import { day } from "#/utils/day";
 import { ClockIcon } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const chartData = Array.from({ length: 24 }, (_, i) => ({
   hour: day().hour(i).minute(0).format("HH[h]"),
@@ -21,8 +21,8 @@ const chartConfig = {
 
 export const PeakSalesHours: Component = () => {
   return (
-    <Card className="w-full">
-      <CardHeader className="flex flex-row gap-3">
+    <Card className="w-full py-4 md:py-6">
+      <CardHeader className="flex flex-row gap-3 px-4 md:px-6">
         <div className="flex size-9 items-center justify-center rounded-lg bg-primary/20">
           <ClockIcon size={22} className="text-primary" />
         </div>
@@ -34,12 +34,14 @@ export const PeakSalesHours: Component = () => {
         </div>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-4 md:px-6">
         <ChartContainer config={chartConfig} className="h-[250px] w-full">
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
 
             <XAxis dataKey="hour" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value: string) => value.slice(0, 3)} />
+
+            <YAxis tickLine={false} axisLine={false} tickMargin={10} width={40} />
 
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
 

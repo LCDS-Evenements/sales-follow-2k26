@@ -8,8 +8,8 @@ import Link from "next/link";
 
 export const EventDetails: Component = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-      <Card className="p-0 rounded-lg px-2 py-1.5">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+      <Card className="p-0 rounded-lg px-2 py-1.5 hidden md:flex">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
             <div className="flex size-7 items-center justify-center rounded-md bg-primary/20">
@@ -29,7 +29,7 @@ export const EventDetails: Component = () => {
         </div>
       </Card>
 
-      <Card className="p-0 rounded-lg px-2 py-1.5">
+      <Card className="p-0 rounded-lg px-2 py-1.5 hidden xl:flex">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
             <div className="flex size-7 items-center justify-center rounded-md bg-primary/20">
