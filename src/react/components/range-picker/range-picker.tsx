@@ -10,7 +10,7 @@ export const RangePicker: Component = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="hidden sm:flex">
         <Button variant="outline" size="sm" className="gap-2">
           <CalendarIcon />
 

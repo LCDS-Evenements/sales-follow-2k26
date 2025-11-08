@@ -30,7 +30,7 @@ export const CustomerAnalytics: Component = () => {
     <div className="flex items-start flex-col gap-4">
       <p className="leading-none font-semibold">Customer analytics</p>
 
-      <div className="grid grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
         <Ages ages={sample.ages} />
 
         <Locations locations={sample.locations} />

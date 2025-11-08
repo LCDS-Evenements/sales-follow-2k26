@@ -1,5 +1,6 @@
 import type { Component, PropsWithChildren } from "#/utils/react";
 import type { Metadata, Viewport } from "next";
+import { TailwindIndicator } from "#/react/components/tailwind-indicator";
 import { ThemeProvider } from "#/react/providers/theme-provider";
 import { Toaster } from "#/react/ui";
 import "./globals.css";
@@ -25,6 +26,8 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
           <Toaster richColors />
 
           {children}
+
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
     </html>

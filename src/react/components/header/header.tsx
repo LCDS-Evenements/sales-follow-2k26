@@ -2,12 +2,12 @@ import type { Component } from "#/utils/react";
 import { Profile } from "#/react/components/profile";
 import { RangePicker } from "#/react/components/range-picker";
 import { Badge, Button } from "#/react/ui";
-import { BellIcon, DownloadIcon, MusicIcon } from "lucide-react";
+import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "lucide-react";
 
 export const Header: Component = () => {
   return (
     <header className="border-b border-border bg-card">
-      <div className="container mx-auto py-6">
+      <div className="container mx-auto py-6 px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex size-10 items-center justify-center rounded-md bg-primary/20">
@@ -31,10 +31,14 @@ export const Header: Component = () => {
 
             <RangePicker />
 
-            <Button size="sm" className="gap-2">
+            <Button size="sm" className="gap-2 hidden sm:flex">
               <DownloadIcon />
 
               Export data
+            </Button>
+
+            <Button variant="outline" size="sm" className="sm:hidden">
+              <MenuIcon />
             </Button>
 
             <Profile className="ml-6" />

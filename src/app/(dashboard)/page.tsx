@@ -15,7 +15,7 @@ const Dashboard: Component = () => {
 
       <StatsCards />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <RevenueOverTime />
 
         <TopPerformers />
@@ -25,7 +25,7 @@ const Dashboard: Component = () => {
 
       <CustomerAnalytics />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <RecentActivity />
 
         <LiveNotifications />
