@@ -35,7 +35,7 @@ export const TicketCard: Component<TicketCardProps> = ({ name, category, value, 
               );
             }
 
-            if (state === "close-to-end") {
+            if (state === "limited-stock") {
               return (
                 <Badge variant="outline" className="relative rounded-md border-none font-semibold bg-amber-500/40">
                   <FlameIcon />

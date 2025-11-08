@@ -23,7 +23,7 @@ const samples: TicketCardProps[] = [
   {
     name: "Early - Pass Vendredi",
     category: "Early",
-    state: "close-to-end",
+    state: "limited-stock",
     value: 450,
     maxValue: 500,
     pourcentage: Math.round((450 / 500) * 100),
@@ -63,7 +63,7 @@ const samples: TicketCardProps[] = [
   {
     name: "Regular - Pass Samedi",
     category: "Regular",
-    state: "close-to-end",
+    state: "limited-stock",
     value: 820,
     maxValue: 1000,
     pourcentage: Math.round((820 / 1000) * 100),

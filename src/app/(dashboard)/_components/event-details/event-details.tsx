@@ -6,7 +6,7 @@ import { envClient } from "#/utils/env/client";
 import { ArrowRightIcon, CalendarIcon, PinIcon } from "lucide-react";
 import Link from "next/link";
 
-const EventDetails: Component = () => {
+export const EventDetails: Component = () => {
   return (
     <div className="grid grid-cols-3 gap-3">
       <Card className="p-0 rounded-lg px-2 py-1.5">
@@ -52,5 +52,3 @@ const EventDetails: Component = () => {
     </div>
   );
 };
-
-export default EventDetails;

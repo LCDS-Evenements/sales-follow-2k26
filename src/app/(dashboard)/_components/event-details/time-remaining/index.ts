@@ -1,1 +1,1 @@
-export * from "./time-remaining";
+export { TimeRemaining } from "./time-remaining";

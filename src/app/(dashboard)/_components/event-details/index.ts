@@ -1,1 +1,1 @@
-export * from "./event-details";
+export { EventDetails } from "./event-details";

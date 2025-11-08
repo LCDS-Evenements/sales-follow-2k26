@@ -5,6 +5,6 @@ export type TicketCardProps = {
   maxValue: number;
   pourcentage: number;
   amount: number;
-  state: "sold-out" | "coming-soon" | "in-sale" | "close-to-end";
+  state: "sold-out" | "coming-soon" | "in-sale" | "limited-stock";
   color: "red" | "pink" | "green" | "orange" | "cyan";
 };

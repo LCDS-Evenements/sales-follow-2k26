@@ -120,7 +120,14 @@ export const RecentActivity: Component = () => {
 
       <CardContent className="flex flex-col gap-2 max-h-[450px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {samples.map((sample) => (
-          <Activity key={sample.ago.getTime()} label={sample.label} ago={sample.ago} type={sample.type} amount={sample.amount} customer={sample.customer} />
+          <Activity
+            key={Math.random().toString(36).substring(2, 11)}
+            label={sample.label}
+            ago={sample.ago}
+            type={sample.type}
+            amount={sample.amount}
+            customer={sample.customer}
+          />
         ))}
       </CardContent>
     </Card>

@@ -1,6 +1,7 @@
 import type { Component } from "#/utils/react";
 import { CustomerAnalytics } from "./_components/customer-analytics";
-import EventDetails from "./_components/event-details/event-details";
+import { EventDetails } from "./_components/event-details";
+import { LiveNotifications } from "./_components/live-notifications";
 import { RecentActivity } from "./_components/recent-activity";
 import { RevenueOverTime } from "./_components/revenue-over-time";
 import { StatsCards } from "./_components/stats-cards";
@@ -26,6 +27,8 @@ const Dashboard: Component = () => {
 
       <div className="grid grid-cols-2 gap-4">
         <RecentActivity />
+
+        <LiveNotifications />
       </div>
     </>
   );
