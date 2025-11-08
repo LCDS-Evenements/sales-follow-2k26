@@ -17,8 +17,9 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "#/react/ui";
-import { LogOutIcon, MonitorIcon, MoonIcon, SettingsIcon, SunIcon, SwatchBookIcon } from "lucide-react";
+import { LogOutIcon, MonitorIcon, MoonIcon, SettingsIcon, ShieldIcon, SunIcon, SwatchBookIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export const Profile: Component<ProfileProps> = ({ className }) => {
   const { setTheme } = useTheme();
@@ -54,10 +55,20 @@ export const Profile: Component<ProfileProps> = ({ className }) => {
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <SettingsIcon />
+          <DropdownMenuItem asChild>
+            <Link href="/admin">
+              <ShieldIcon />
 
-            Settings
+              Administration
+            </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem asChild>
+            <Link href="/account">
+              <SettingsIcon />
+
+              Settings
+            </Link>
           </DropdownMenuItem>
 
           <DropdownMenuSub>

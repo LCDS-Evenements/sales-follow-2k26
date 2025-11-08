@@ -1,10 +1,15 @@
+"use client";
+
 import type { Component } from "#/utils/react";
 import { Profile } from "#/react/components/profile";
 import { RangePicker } from "#/react/components/range-picker";
 import { Badge, Button } from "#/react/ui";
 import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export const Header: Component = () => {
+  const pathname = usePathname();
+
   return (
     <header className="border-b border-border bg-card">
       <div className="container mx-auto py-6 px-8">
@@ -21,25 +26,29 @@ export const Header: Component = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="outline" className="relative" size="icon-sm">
-              <BellIcon />
+            {pathname !== "/admin" && (
+              <>
+                <Button variant="outline" className="relative" size="icon-sm">
+                  <BellIcon />
 
-              <Badge className="absolute -right-1 -top-1 size-4 rounded-full p-0 flex items-center justify-center text-xs font-mono">
-                2
-              </Badge>
-            </Button>
+                  <Badge className="absolute -right-1 -top-1 size-4 rounded-full p-0 flex items-center justify-center text-xs font-mono">
+                    2
+                  </Badge>
+                </Button>
 
-            <RangePicker />
+                <RangePicker />
 
-            <Button size="sm" className="gap-2 hidden sm:flex">
-              <DownloadIcon />
+                <Button size="sm" className="gap-2 hidden sm:flex">
+                  <DownloadIcon />
 
-              Export data
-            </Button>
+                  Export data
+                </Button>
 
-            <Button variant="outline" size="sm" className="sm:hidden">
-              <MenuIcon />
-            </Button>
+                <Button variant="outline" size="sm" className="sm:hidden">
+                  <MenuIcon />
+                </Button>
+              </>
+            )}
 
             <Profile className="ml-6" />
           </div>
