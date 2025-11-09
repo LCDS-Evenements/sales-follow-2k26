@@ -21,14 +21,14 @@ export const APIConfiguration: Component = () => {
   const { copyToClipboard: copyClientSecret, isCopied: copiedClientSecret } = useCopyToClipboard();
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="py-4 md:py-6">
+      <CardHeader className="px-4 md:px-6">
         <CardTitle>API configuration</CardTitle>
 
         <CardDescription>Manage your API credentials for the website HelloAsso</CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="px-4 md:px-6">
         <form className="flex flex-col items-start gap-6 w-full">
           <div className="flex flex-col items-start gap-2 w-full">
             <Label htmlFor="client-id" className="font-semibold">Client ID</Label>
@@ -70,7 +70,7 @@ export const APIConfiguration: Component = () => {
         </form>
       </CardContent>
 
-      <CardFooter className="justify-end">
+      <CardFooter className="justify-end px-4 md:px-6">
         <Button>Save changes</Button>
       </CardFooter>
     </Card>

@@ -3,6 +3,8 @@ import type { SetState } from "#/utils/react";
 export type AdminSidebarProps = {
   activeTab: string;
   setActiveTab: SetState<AdminTabsTypeElement>;
+  open: boolean;
+  setOpen: SetState<boolean>;
 };
 
 export const AdminTabsType = {
