@@ -1,41 +1,48 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Idea IDE:
+**/.idea/
 
-# testing
-/coverage
+# Package lock (except for PNPM):
+**/yarn.lock
+**/package-lock.json
+**/bun.lockb
 
-# next.js
-/.next/
-/out/
+# Packages:
+**/node_modules
 
-# production
-/build
+# Code gen:
+**/prisma/generated
 
-# misc
-.DS_Store
-*.pem
+# Environment variables and secrets files:
+**/.env*
+**/.bucket.json
+# 
+**/.infisical.json
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# React Email:
+**/.react-email
 
-# env files (can opt-in for committing if needed)
-.env*
+# Builds:
+**/.next
+**/modules/**/dist
+**/build
+**/dist
 
-# vercel
-.vercel
+# TS:
+**/*.tsbuildinfo
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Playwright:
+**/test-results/
+**/playwright-report/
+**/blob-report/
+**/playwright/.cache/
 
-.env
+# Storybook
+**/storybook-static
+
+# MacOS
+**/.DS_Store
+
+#Localfile
+
+localfile.*
+infra/*

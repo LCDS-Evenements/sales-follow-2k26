@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    // RUN APP FOR DEVELOPMENT
+    "dev": "open-cli http://localhost:3000 && dotenv -- pnpm --filter=@core-services/backend --filter=@core-services/frontend --recursive run dev",
+    "dev:ngrok": "open-cli http://localhost:3000 && dotenv -- pnpm --filter=@core-services/backend --filter=@core-services/frontend --recursive run dev:ngrok",
+
+    // FRONTEND
+    "dev:frontend": "dotenv -- pnpm --filter=@core-services/frontend run dev",
+
+    // BACKEND
+    "dev:backend": "dotenv -- pnpm --filter=@core-services/backend run dev",
+
+    // BUILD
+    "build": "dotenv -- pnpm --filter=@core* --recursive run build",
+
+    // LINTING & FORMATTING
+    "lint": "pnpm --filter=@core* --recursive run lint",
+    "lint:fix": "pnpm --filter=@core* --recursive run lint:fix",
+
+    "ts:check": "pnpm --filter=@core* --recursive run ts:check",
+
+    // DEPENDENCY MANAGEMENT
+    "update": "pnpm --filter=@core* --recursive up -i -L"
+  },
+  "dependencies": {
+    "dotenv-cli": "^7.4.1",
+    "open-cli": "^8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "5.6.2"
+  },
+  "engines": {
+    "node": ">=22.20.0",
+    "pnpm": ">=9.0.0"
+  }
+}
