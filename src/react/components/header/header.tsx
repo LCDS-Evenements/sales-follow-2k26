@@ -5,6 +5,7 @@ import { Profile } from "#/react/components/profile";
 import { RangePicker } from "#/react/components/range-picker";
 import { Badge, Button } from "#/react/ui";
 import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const Header: Component = () => {
@@ -19,10 +20,10 @@ export const Header: Component = () => {
               <MusicIcon size={20} className="text-primary" />
             </div>
 
-            <div>
+            <Link href="/">
               <h1 className="font-bold">Les CuicuiteDays 2k26</h1>
               <p className="text-sm font-semibold text-muted-foreground">Sales analytics & insights</p>
-            </div>
+            </Link>
           </div>
 
           <div className="flex items-center gap-2">

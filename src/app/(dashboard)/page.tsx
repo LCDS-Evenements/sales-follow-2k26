@@ -10,7 +10,7 @@ import { TopPerformers } from "./_components/top-performers";
 
 const Dashboard: Component = () => {
   return (
-    <>
+    <div className="container mx-auto py-4 space-y-8 px-8">
       <EventDetails />
 
       <StatsCards />
@@ -30,7 +30,7 @@ const Dashboard: Component = () => {
 
         <LiveNotifications />
       </div>
-    </>
+    </div>
   );
 };
 
