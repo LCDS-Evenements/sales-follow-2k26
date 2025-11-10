@@ -1,8 +1,8 @@
 "use client";
 
-import type { Component } from "@core-modules/ui-kit/utils";
 import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "@core-modules/ui-kit/icons";
 import { Badge, Button } from "@core-modules/ui-kit/ui";
+import { cn, type Component } from "@core-modules/ui-kit/utils";
 import { Profile } from "#/react/components/profile";
 import { RangePicker } from "#/react/components/range-picker";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export const Header: Component = () => {
 
   return (
     <header className="border-b border-border bg-card">
-      <div className="container mx-auto py-6 px-8">
+      <div className={cn("mx-auto py-6 px-8", pathname === "/admin" ? "px-8" : "container")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex size-10 items-center justify-center rounded-md bg-primary/20">

@@ -24,7 +24,7 @@ export const AdminSidebar: Component<AdminSidebarProps> = ({ activeTab, setActiv
           open ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <nav className="p-4 space-y-2 flex flex-col">
+        <nav className="p-8 space-y-2 flex flex-col">
           <Button variant="outline" className="md:hidden" size="icon" onClick={() => setOpen(false)}>
             <XIcon size={16} />
           </Button>

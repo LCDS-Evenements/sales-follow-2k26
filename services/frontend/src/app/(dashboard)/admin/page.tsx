@@ -1,6 +1,7 @@
 "use client";
 
 import type { Component } from "@core-modules/ui-kit/utils";
+import { Members } from "./_components/members";
 import { Settings } from "./_components/settings";
 import { MenuIcon } from "@core-modules/ui-kit/icons";
 import { Button } from "@core-modules/ui-kit/ui";
@@ -25,6 +26,8 @@ const Admin: Component = () => {
         </Button>
 
         {activeTab === AdminTabsType.Settings && <Settings />}
+
+        {activeTab === AdminTabsType.Members && <Members />}
       </div>
     </div>
   );

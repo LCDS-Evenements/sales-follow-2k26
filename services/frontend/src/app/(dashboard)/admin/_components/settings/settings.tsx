@@ -6,10 +6,15 @@ import { FestivalInformation } from "./festival-information";
 
 export const Settings: Component = () => {
   return (
-    <div className="grid grid-cols-1 gap-8">
-      <APIConfiguration />
+    <div>
+      <p className="font-semibold text-lg mb-4">Settings</p>
 
-      <FestivalInformation />
+      <div className="grid grid-cols-1 gap-8">
+
+        <APIConfiguration />
+
+        <FestivalInformation />
+      </div>
     </div>
   );
 };
