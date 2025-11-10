@@ -1,11 +1,11 @@
 "use client";
 
 import type { AdminSidebarProps, AdminTabsTypeElement } from "./admin-sidebar.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { ADMIN_TABS } from "./admin-sidebar.config";
-import { Button } from "#/react/ui";
-import { cn } from "../utils/style";
-import { XIcon } from "lucide-react";
+import { XIcon } from "@core-modules/ui-kit/icons";
+import { Button } from "@core-modules/ui-kit/ui";
+import { cn } from "@core-modules/ui-kit/utils";
 
 export const AdminSidebar: Component<AdminSidebarProps> = ({ activeTab, setActiveTab, open, setOpen }) => {
   const handleTabChange = (tab: AdminTabsTypeElement) => {

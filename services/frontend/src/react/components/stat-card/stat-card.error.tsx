@@ -1,7 +1,7 @@
 import type { StatCardErrorProps } from "./stat-card.type";
-import type { Component } from "#/utils/react";
-import { Button, Card, CardAction, CardFooter, CardHeader } from "#/react/ui";
-import { TriangleAlertIcon, RefreshCwIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { TriangleAlertIcon, RefreshCwIcon } from "@core-modules/ui-kit/icons";
+import { Button, Card, CardAction, CardFooter, CardHeader } from "@core-modules/ui-kit/ui";
 
 export const StatCardError: Component<StatCardErrorProps> = ({ label }) => {
   return (

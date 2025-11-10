@@ -1,5 +1,5 @@
-import type { Component } from "#/utils/react";
-import { useCopyToClipboard } from "#/react/hooks/clipboard";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { CheckIcon, CopyIcon } from "@core-modules/ui-kit/icons";
 import {
   Button,
   Card,
@@ -13,8 +13,8 @@ import {
   InputGroupButton,
   InputGroupInput,
   Label,
-} from "#/react/ui";
-import { CheckIcon, CopyIcon } from "lucide-react";
+} from "@core-modules/ui-kit/ui";
+import { useCopyToClipboard } from "#/react/hooks/clipboard";
 
 export const APIConfiguration: Component = () => {
   const { copyToClipboard: copyClientID, isCopied: copiedClientID } = useCopyToClipboard();

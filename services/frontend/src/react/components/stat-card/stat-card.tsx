@@ -1,10 +1,10 @@
 import type { StatCardProps } from "./stat-card.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { StatCardError } from "./stat-card.error";
 import { StatCardSkeleton } from "./stat-card.skeleton";
-import { Card, CardAction, CardFooter, CardHeader } from "#/react/ui";
-import { run } from "#/utils/effect/run";
-import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
+import { TrendingDownIcon, TrendingUpIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardAction, CardFooter, CardHeader } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
 
 export const StatCard: Component<StatCardProps> = ({ label, icon, value, change, trend, unit, loading, error }) => {
   const CustomIcon = icon;

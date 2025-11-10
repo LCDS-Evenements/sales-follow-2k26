@@ -1,10 +1,10 @@
 "use client";
 
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "@core-modules/ui-kit/icons";
+import { Badge, Button } from "@core-modules/ui-kit/ui";
 import { Profile } from "#/react/components/profile";
 import { RangePicker } from "#/react/components/range-picker";
-import { Badge, Button } from "#/react/ui";
-import { BellIcon, DownloadIcon, MenuIcon, MusicIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

@@ -1,10 +1,10 @@
 "use client";
 
-import type { ChartConfig } from "#/react/ui";
-import type { Component } from "#/utils/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, ChartContainer, ChartTooltip, ChartTooltipContent } from "#/react/ui";
+import type { ChartConfig } from "@core-modules/ui-kit/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { ClockIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, ChartContainer, ChartTooltip, ChartTooltipContent } from "@core-modules/ui-kit/ui";
 import { day } from "#/utils/day";
-import { ClockIcon } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const chartData = Array.from({ length: 24 }, (_, i) => ({

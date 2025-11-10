@@ -1,9 +1,9 @@
-import type { Component, PropsWithChildren } from "#/utils/react";
+import type { Component, PropsWithChildren } from "@core-modules/ui-kit/utils";
 import type { Metadata, Viewport } from "next";
+import { Toaster } from "@core-modules/ui-kit/ui";
 import { TailwindIndicator } from "#/react/components/tailwind-indicator";
 import { ThemeProvider } from "#/react/providers/theme-provider";
-import { Toaster } from "#/react/ui";
-import "./globals.css";
+import "@core-modules/ui-kit/config";
 
 export const metadata: Metadata = {
   title: "Ticket sales tracking tool",

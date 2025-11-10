@@ -1,8 +1,8 @@
 import type { PerformerItemProps } from "./performer-item/performer-item.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { PerformerItem } from "./performer-item";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "#/react/ui";
-import { CrownIcon } from "lucide-react";
+import { CrownIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@core-modules/ui-kit/ui";
 
 const samples: PerformerItemProps[] = [
   {

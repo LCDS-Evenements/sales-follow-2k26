@@ -1,12 +1,10 @@
 {
   "name": "@core-modules/ui-kit",
   "type": "module",
-  "version": "1.0.0",
-  "private": true,
   "exports": {
-    "./ui": "./src/ui",
-    "./hooks": "./src/hooks",
-    "./utils": "./src/utils",
+    "./ui": "./src/ui/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./utils": "./src/utils/index.ts",
     "./icons": "./src/icons.ts",
     "./config": "./src/config/style.css"
   },

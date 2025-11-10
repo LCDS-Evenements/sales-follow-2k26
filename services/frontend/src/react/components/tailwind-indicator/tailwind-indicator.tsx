@@ -1,4 +1,4 @@
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 
 export const TailwindIndicator: Component = () => {
   if (process.env.NODE_ENV === "production") return <></>;

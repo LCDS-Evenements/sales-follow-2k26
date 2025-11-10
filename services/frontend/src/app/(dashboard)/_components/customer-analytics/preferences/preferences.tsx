@@ -1,7 +1,7 @@
 import type { PreferencesProps } from "./preferences.type";
-import type { Component } from "#/utils/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "#/react/ui";
-import { TicketIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { TicketIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "@core-modules/ui-kit/ui";
 
 export const Preferences: Component<PreferencesProps> = ({ preferences }) => {
   return (

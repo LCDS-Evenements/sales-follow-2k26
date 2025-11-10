@@ -1,1 +1,1 @@
-export type * from "./maybe-promise"
+export type * from "./maybe-promise";

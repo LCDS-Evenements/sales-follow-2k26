@@ -1,2 +1,2 @@
-export * from "./result"
-export type * from "./type"
+export * from "./result";
+export type * from "./type";

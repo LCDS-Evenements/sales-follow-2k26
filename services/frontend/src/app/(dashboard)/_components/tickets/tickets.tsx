@@ -1,9 +1,7 @@
 "use client";
 
 import type { TicketCardProps } from "#/react/components/ticket-card/ticket-card.type";
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { TicketCard } from "#/react/components/ticket-card";
-import { useDebounce } from "#/react/hooks/debounce";
+import { SearchIcon } from "@core-modules/ui-kit/icons";
 import {
   Badge,
   Button,
@@ -12,11 +10,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenu,
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "#/react/ui";
-import { SearchIcon } from "lucide-react";
+} from "@core-modules/ui-kit/ui";
+import { TicketCard } from "#/react/components/ticket-card";
+import { useDebounce } from "#/react/hooks/debounce";
 import { useState } from "react";
 
 const samples: TicketCardProps[] = [

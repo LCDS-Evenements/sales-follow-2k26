@@ -1,9 +1,9 @@
 import type { ActivityProps } from "./activity.type";
-import type { Component } from "#/utils/react";
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "#/react/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { ShoppingBasketIcon, SparklesIcon } from "@core-modules/ui-kit/icons";
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
 import { day } from "#/utils/day";
-import { run } from "#/utils/effect/run";
-import { ShoppingBasketIcon, SparklesIcon } from "lucide-react";
 
 export const Activity: Component<ActivityProps> = ({ ago, label, type, amount, customer }) => {
   return (

@@ -1,6 +1,6 @@
 import type { StatCardSkeletonProps } from "./stat-card.type";
-import type { Component } from "#/utils/react";
-import { Card, CardAction, CardFooter, CardHeader, Skeleton } from "#/react/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { Card, CardAction, CardFooter, CardHeader, Skeleton } from "@core-modules/ui-kit/ui";
 
 export const StatCardSkeleton: Component<StatCardSkeletonProps> = ({ label, icon }) => {
   const CustomIcon = icon;

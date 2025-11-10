@@ -1,9 +1,9 @@
 import type { NotificationProps } from "./notification.type";
-import type { Component } from "#/utils/react";
-import { Item, ItemContent, ItemDescription, ItemTitle } from "#/react/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { CheckCircleIcon, ShoppingBagIcon, TriangleAlertIcon } from "@core-modules/ui-kit/icons";
+import { Item, ItemContent, ItemDescription, ItemTitle } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
 import { day } from "#/utils/day";
-import { run } from "#/utils/effect/run";
-import { CheckCircleIcon, ShoppingBagIcon, TriangleAlertIcon } from "lucide-react";
 
 export const Notification: Component<NotificationProps> = ({ ago, label, type }) => {
   return (

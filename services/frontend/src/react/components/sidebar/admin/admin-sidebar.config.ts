@@ -1,4 +1,4 @@
-import { SettingsIcon, ShoppingCartIcon, TagIcon, TicketIcon, UsersIcon } from "lucide-react";
+import { SettingsIcon, ShoppingCartIcon, TagIcon, TicketIcon, UsersIcon } from "@core-modules/ui-kit/icons";
 
 export const ADMIN_TABS = [
   { id: "settings", label: "Settings", icon: SettingsIcon },

@@ -1,9 +1,9 @@
 "use client";
 
-import type { ChartConfig } from "#/react/ui";
-import type { Component } from "#/utils/react";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, ChartContainer, ChartTooltip, ChartTooltipContent } from "#/react/ui";
-import { ChartColumn } from "lucide-react";
+import type { ChartConfig } from "@core-modules/ui-kit/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { ChartColumn } from "@core-modules/ui-kit/icons";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, ChartContainer, ChartTooltip, ChartTooltipContent } from "@core-modules/ui-kit/ui";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 export const RevenueOverTime: Component = () => {

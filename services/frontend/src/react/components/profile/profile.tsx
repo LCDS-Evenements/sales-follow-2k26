@@ -1,7 +1,8 @@
 "use client";
 
 import type { ProfileProps } from "./profile.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { LogOutIcon, MonitorIcon, MoonIcon, SettingsIcon, ShieldIcon, SunIcon, SwatchBookIcon } from "@core-modules/ui-kit/icons";
 import {
   Avatar,
   AvatarFallback,
@@ -16,8 +17,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "#/react/ui";
-import { LogOutIcon, MonitorIcon, MoonIcon, SettingsIcon, ShieldIcon, SunIcon, SwatchBookIcon } from "lucide-react";
+} from "@core-modules/ui-kit/ui";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 

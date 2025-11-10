@@ -1,6 +1,6 @@
 "use client";
 
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { APIConfiguration } from "./api-configuration";
 import { FestivalInformation } from "./festival-information";
 

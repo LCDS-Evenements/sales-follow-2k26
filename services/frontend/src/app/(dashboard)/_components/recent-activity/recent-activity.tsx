@@ -1,9 +1,9 @@
 import type { ActivityProps } from "./activity/activity.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { Activity } from "./activity";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "#/react/ui";
+import { ClockIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@core-modules/ui-kit/ui";
 import { day } from "#/utils/day";
-import { ClockIcon } from "lucide-react";
 
 const samples: ActivityProps[] = [
   {

@@ -1,4 +1,4 @@
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { CustomerAnalytics } from "./_components/customer-analytics";
 import { EventDetails } from "./_components/event-details";
 import { LiveNotifications } from "./_components/live-notifications";

@@ -1,8 +1,8 @@
 "use client";
 
-import type { Component } from "#/utils/react";
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "#/react/ui";
-import { CalendarIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { CalendarIcon } from "@core-modules/ui-kit/icons";
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@core-modules/ui-kit/ui";
 import { useState } from "react";
 
 export const RangePicker: Component = () => {

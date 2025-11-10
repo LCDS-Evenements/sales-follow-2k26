@@ -1,5 +1,5 @@
-import type { Component } from "#/utils/react";
-import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Input, Label } from "#/react/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Input, Label } from "@core-modules/ui-kit/ui";
 
 export const FestivalInformation: Component = () => {
   return (

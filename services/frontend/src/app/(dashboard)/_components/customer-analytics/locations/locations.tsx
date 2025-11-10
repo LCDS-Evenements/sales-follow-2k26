@@ -1,7 +1,7 @@
 import type { LocationsProps } from "./locations.type";
-import type { Component } from "#/utils/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "#/react/ui";
-import { PinIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { PinIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "@core-modules/ui-kit/ui";
 
 export const Locations: Component<LocationsProps> = ({ locations }) => {
   return (

@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from "@core-modules/ui-kit/icons";
 
 export type StatCardProps = {
   label: string;

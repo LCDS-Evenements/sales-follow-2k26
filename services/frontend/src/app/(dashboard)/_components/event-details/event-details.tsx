@@ -1,9 +1,9 @@
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { TimeRemaining } from "./time-remaining";
-import { Card } from "#/react/ui";
+import { ArrowRightIcon, CalendarIcon, PinIcon } from "@core-modules/ui-kit/icons";
+import { Card } from "@core-modules/ui-kit/ui";
 import { day } from "#/utils/day";
 import { envClient } from "#/utils/env/client";
-import { ArrowRightIcon, CalendarIcon, PinIcon } from "lucide-react";
 import Link from "next/link";
 
 export const EventDetails: Component = () => {

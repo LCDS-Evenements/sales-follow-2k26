@@ -1,9 +1,9 @@
 import type { TicketCardProps } from "./ticket-card.type";
-import type { Component } from "#/utils/react";
-import { Badge, Card, CardAction, CardContent, CardFooter, CardHeader, Progress } from "#/react/ui";
-import { run } from "#/utils/effect/run";
-import { cn } from "../utils/style";
-import { ClockIcon, FlameIcon, SparklesIcon, TicketIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { ClockIcon, FlameIcon, SparklesIcon, TicketIcon } from "@core-modules/ui-kit/icons";
+import { Badge, Card, CardAction, CardContent, CardFooter, CardHeader, Progress } from "@core-modules/ui-kit/ui";
+import { cn } from "@core-modules/ui-kit/utils";
+import { run } from "@core-packages/effect";
 
 export const TicketCard: Component<TicketCardProps> = ({ name, category, value, maxValue, pourcentage, amount, state, color }) => {
   const colorVariants = {

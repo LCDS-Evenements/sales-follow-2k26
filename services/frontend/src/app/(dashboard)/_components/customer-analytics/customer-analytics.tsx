@@ -1,4 +1,4 @@
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { Ages } from "./ages";
 import { Locations } from "./locations";
 import { PeakSalesHours } from "./peak-sales-hours";

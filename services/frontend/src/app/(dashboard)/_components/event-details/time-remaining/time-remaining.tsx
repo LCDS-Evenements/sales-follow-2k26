@@ -1,11 +1,11 @@
 "use client";
 
 import type { StateType, TimeRemainingProps, TimeRemainingType } from "./time-remaining.type";
-import type { Component } from "#/utils/react";
-import { Card } from "#/react/ui";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { CheckIcon, ClockIcon, PartyPopperIcon } from "@core-modules/ui-kit/icons";
+import { Card } from "@core-modules/ui-kit/ui";
+import { range } from "@core-packages/effect";
 import { day } from "#/utils/day";
-import { range } from "#/utils/effect/array";
-import { CheckIcon, ClockIcon, PartyPopperIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {

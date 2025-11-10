@@ -1,4 +1,4 @@
-import type { Component, PropsWithChildren } from "#/utils/react";
+import type { Component, PropsWithChildren } from "@core-modules/ui-kit/utils";
 import { Header } from "#/react/components/header";
 
 const DashboardLayout: Component<PropsWithChildren> = ({ children }) => {

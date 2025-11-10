@@ -1,8 +1,8 @@
 import type { PerformerItemProps } from "./performer-item.type";
-import type { Component } from "#/utils/react";
-import { Badge, Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "#/react/ui";
-import { run } from "#/utils/effect/run";
-import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { TrendingDownIcon, TrendingUpIcon } from "@core-modules/ui-kit/icons";
+import { Badge, Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
 
 export const PerformerItem: Component<PerformerItemProps> = ({ label, change, rank, trend, unitsSold, amount }) => {
   return (

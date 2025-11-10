@@ -1,11 +1,11 @@
 "use client";
 
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { Settings } from "./_components/settings";
+import { MenuIcon } from "@core-modules/ui-kit/icons";
+import { Button } from "@core-modules/ui-kit/ui";
 import { AdminSidebar } from "#/react/components/sidebar";
 import { AdminTabsType, type AdminTabsTypeElement } from "#/react/components/sidebar/admin";
-import { Button } from "#/react/ui";
-import { MenuIcon } from "lucide-react";
 import { useState } from "react";
 
 const Admin: Component = () => {

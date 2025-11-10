@@ -1,11 +1,11 @@
 "use client";
 
 import type { NotificationProps } from "./notification/notification.type";
-import type { Component } from "#/utils/react";
+import type { Component } from "@core-modules/ui-kit/utils";
 import { Notification } from "./notification";
-import { Badge, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "#/react/ui";
+import { BellIcon, RadioIcon } from "@core-modules/ui-kit/icons";
+import { Badge, Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@core-modules/ui-kit/ui";
 import { day } from "#/utils/day";
-import { BellIcon, RadioIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const samples: NotificationProps[] = [

@@ -1,7 +1,7 @@
 import type { AgesProps } from "./ages.type";
-import type { Component } from "#/utils/react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "#/react/ui";
-import { UsersIcon } from "lucide-react";
+import type { Component } from "@core-modules/ui-kit/utils";
+import { UsersIcon } from "@core-modules/ui-kit/icons";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Progress } from "@core-modules/ui-kit/ui";
 
 export const Ages: Component<AgesProps> = ({ ages }) => {
   return (

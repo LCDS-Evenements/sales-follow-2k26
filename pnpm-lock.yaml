@@ -202,6 +202,12 @@ importers:
 
   services/frontend:
     dependencies:
+      '@core-modules/ui-kit':
+        specifier: workspace:*
+        version: link:../../modules/ui-kit
+      '@core-packages/effect':
+        specifier: workspace:*
+        version: link:../../packages/effect
       dayjs:
         specifier: ^1.11.19
         version: 1.11.19

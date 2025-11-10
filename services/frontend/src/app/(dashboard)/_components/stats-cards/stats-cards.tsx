@@ -1,7 +1,7 @@
+import type { Component } from "@core-modules/ui-kit/utils";
 import type { StatCardProps } from "#/react/components/stat-card/stat-card.type";
-import type { Component } from "#/utils/react";
+import { DollarSignIcon, ShoppingBasketIcon, TicketIcon, UsersIcon } from "@core-modules/ui-kit/icons";
 import { StatCard } from "#/react/components/stat-card";
-import { DollarSignIcon, ShoppingBasketIcon, TicketIcon, UsersIcon } from "lucide-react";
 
 const samples: StatCardProps[] = [
   {

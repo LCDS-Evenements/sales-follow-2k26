@@ -1,4 +1,4 @@
-import type { SetState } from "#/utils/react";
+import type { SetState } from "@core-modules/ui-kit/utils";
 
 export type AdminSidebarProps = {
   activeTab: string;
