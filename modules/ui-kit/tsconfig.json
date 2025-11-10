@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // Base options:
+    "target": "ES2023",
+    "moduleDetection": "force",
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+
+    // Strictness:
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noUncheckedSideEffectImports": true,
+
+    // Not transpiling with TypeScript (tsc):
+    "module": "Preserve",
+    "noEmit": true,
+
+    // Lib options:
+    "lib": ["ES2023", "dom", "dom.iterable"],
+
+    // Compilation options:
+    "jsx": "preserve"
+  },
+  "include": ["**/*.ts", "**/*.tsx", "file.d.ts", "eslint.config.js"],
+  "exclude": ["node_modules"]
+}

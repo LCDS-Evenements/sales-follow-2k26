@@ -1,0 +1,18 @@
+{
+  "name": "@core-packages/effect",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ts:check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@bluzzi/eslint-config": "^2.1.1",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3"
+  }
+}

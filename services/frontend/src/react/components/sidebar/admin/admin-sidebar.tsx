@@ -4,7 +4,7 @@ import type { AdminSidebarProps, AdminTabsTypeElement } from "./admin-sidebar.ty
 import type { Component } from "#/utils/react";
 import { ADMIN_TABS } from "./admin-sidebar.config";
 import { Button } from "#/react/ui";
-import { cn } from "#/utils/style";
+import { cn } from "../utils/style";
 import { XIcon } from "lucide-react";
 
 export const AdminSidebar: Component<AdminSidebarProps> = ({ activeTab, setActiveTab, open, setOpen }) => {

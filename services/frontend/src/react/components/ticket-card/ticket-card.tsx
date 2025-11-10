@@ -2,7 +2,7 @@ import type { TicketCardProps } from "./ticket-card.type";
 import type { Component } from "#/utils/react";
 import { Badge, Card, CardAction, CardContent, CardFooter, CardHeader, Progress } from "#/react/ui";
 import { run } from "#/utils/effect/run";
-import { cn } from "#/utils/style";
+import { cn } from "../utils/style";
 import { ClockIcon, FlameIcon, SparklesIcon, TicketIcon } from "lucide-react";
 
 export const TicketCard: Component<TicketCardProps> = ({ name, category, value, maxValue, pourcentage, amount, state, color }) => {
