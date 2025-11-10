@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Toaster } from "@core-modules/ui-kit/ui";
 import { TailwindIndicator } from "#/react/components/tailwind-indicator";
 import { ThemeProvider } from "#/react/providers/theme-provider";
-import "@core-modules/ui-kit/config";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ticket sales tracking tool",
