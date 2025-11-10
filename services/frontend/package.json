@@ -2,7 +2,7 @@
   "name": "@core-services/frontend",
   "type": "module",
   "scripts": {
-    "dev": "open-cli http://localhost:3000 && next dev --turbopack --port 3000",
+    "dev": "next dev --turbopack --port 3000",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint .",
