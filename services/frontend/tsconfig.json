@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
@@ -19,6 +19,6 @@
       "#/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lang.d.ts", "eslint.config.js", "next.config.mjs", "postcss.config.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "lang.d.ts", "eslint.config.js", "next.config.mjs", "postcss.config.mjs", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
