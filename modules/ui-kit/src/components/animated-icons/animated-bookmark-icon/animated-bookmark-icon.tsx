@@ -3,23 +3,35 @@
 /**
  *
  * Based on icons on this website
- * @url https://icons.pqoqubbw.dev/?q=plus
-*
-*/
+ * @url https://icons.pqoqubbw.dev/?q=bookmark
+ *
+ */
 
-import type { AnimatedPlusIconProps, PlusIconHandle } from "./animated-plus-icon.type";
-import type { MouseEvent, RefObject } from "react";
-import { cn } from "@core-modules/ui-kit/utils";
+import type { AnimatedBookmarkIconProps, BookmarkIconHandle } from "./animated-bookmark-icon.type";
+import type { Variants } from "motion/react";
+import type { RefObject, MouseEvent } from "react";
+import { cn } from "../../../utils";
 import { motion, useAnimation } from "motion/react";
 import { useCallback, useEffect, useImperativeHandle, useRef } from "react";
 
-export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, size, "data-hovered": hovered, ...props }: AnimatedPlusIconProps & { ref?: RefObject<PlusIconHandle | null> }) => {
+const BOOKMARK_VARIANTS: Variants = {
+  normal: { scaleY: 1, scaleX: 1 },
+  animate: {
+    scaleY: [1, 1.3, 0.9, 1.05, 1],
+    scaleX: [1, 0.9, 1.1, 0.95, 1],
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const AnimatedBookmarkIcon = ({ ref, className, size, onMouseEnter, onMouseLeave, "data-hovered": hovered, ...props }: AnimatedBookmarkIconProps & { ref?: RefObject<BookmarkIconHandle | null> }) => {
   const controls = useAnimation();
   const isControlledRef = useRef(false);
 
   useImperativeHandle(ref, () => {
     isControlledRef.current = true;
-
     return {
       startAnimation: () => void controls.start("animate"),
       stopAnimation: () => void controls.start("normal"),
@@ -30,11 +42,10 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
     (e: MouseEvent<HTMLDivElement>) => {
       if (!isControlledRef.current) {
         void controls.start("animate");
-
-        return;
       }
-
-      onMouseEnter?.(e);
+      else {
+        onMouseEnter?.(e);
+      }
     },
     [controls, onMouseEnter],
   );
@@ -43,11 +54,10 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
     (e: MouseEvent<HTMLDivElement>) => {
       if (!isControlledRef.current) {
         void controls.start("normal");
-
-        return;
       }
-
-      onMouseLeave?.(e);
+      else {
+        onMouseLeave?.(e);
+      }
     },
     [controls, onMouseLeave],
   );
@@ -63,8 +73,13 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
   }, [hovered, controls]);
 
   return (
-    <div className={cn(className)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...props}>
-      <motion.svg
+    <div
+      className={cn(className)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
@@ -74,16 +89,18 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        animate={controls}
-        transition={{ type: "spring", stiffness: 100, damping: 15 }}
-        variants={{ normal: { rotate: 0 }, animate: { rotate: 180 } }}
       >
-        <path d="M5 12h14" />
-
-        <path d="M12 5v14" />
-      </motion.svg>
+        <motion.path
+          d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"
+          animate={controls}
+          variants={BOOKMARK_VARIANTS}
+          style={{ originY: 0.5, originX: 0.5 }}
+        />
+      </svg>
     </div>
   );
 };
 
-AnimatedPlusIcon.displayName = "AnimatedPlusIcon";
+AnimatedBookmarkIcon.displayName = "AnimatedBookmarkIcon";
+
+export { AnimatedBookmarkIcon };

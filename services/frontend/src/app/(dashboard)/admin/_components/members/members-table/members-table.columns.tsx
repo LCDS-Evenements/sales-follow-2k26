@@ -111,8 +111,9 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
         <ColumnHeader column={column} title="Active" />
       ),
       cell: ({ cell }) => {
-        const booleanVariant = Object.values(BooleanVariants).find(
-          (booleanVariant) => booleanVariant === cell.getValue<Members["active"]>(),
+        const value = cell.getValue<Members["active"]>();
+        const booleanVariant = (Object.values(BooleanVariants as Record<string, boolean>)).find(
+          (variant) => variant === value,
         );
 
         if (!booleanVariant) return <XIcon size={20} className="text-red-500" />;

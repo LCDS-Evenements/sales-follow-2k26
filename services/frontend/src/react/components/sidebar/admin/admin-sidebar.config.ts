@@ -1,9 +1,9 @@
-import { SettingsIcon, ShoppingCartIcon, TagIcon, TicketIcon, UsersIcon } from "@core-modules/ui-kit/icons";
+import { AnimatedCartIcon, AnimatedSettingsIcon, AnimatedUsersIcon, AnimatedBookmarkIcon, AnimatedTicketIcon } from "@core-modules/ui-kit/components";
 
 export const ADMIN_TABS = [
-  { id: "settings", label: "Settings", icon: SettingsIcon },
-  { id: "members", label: "Members", icon: UsersIcon },
-  { id: "purchases", label: "Purchases", icon: ShoppingCartIcon },
-  { id: "categories", label: "Ticket categories", icon: TagIcon },
-  { id: "tickets", label: "Tickets", icon: TicketIcon },
+  { id: "settings", label: "Settings", icon: AnimatedSettingsIcon },
+  { id: "members", label: "Members", icon: AnimatedUsersIcon },
+  { id: "purchases", label: "Purchases", icon: AnimatedCartIcon },
+  { id: "categories", label: "Ticket categories", icon: AnimatedBookmarkIcon },
+  { id: "tickets", label: "Tickets", icon: AnimatedTicketIcon },
 ];

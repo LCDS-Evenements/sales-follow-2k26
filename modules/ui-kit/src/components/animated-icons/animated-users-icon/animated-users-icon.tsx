@@ -3,18 +3,40 @@
 /**
  *
  * Based on icons on this website
- * @url https://icons.pqoqubbw.dev/?q=plus
+ * @url https://icons.pqoqubbw.dev/?q=users
 *
 */
 
-import type { AnimatedPlusIconProps, PlusIconHandle } from "./animated-plus-icon.type";
+import type { AnimatedUsersIconProps, UsersIconHandle } from "./animated-users-icon.type";
+import type { Variants } from "motion/react";
 import type { MouseEvent, RefObject } from "react";
 import { cn } from "@core-modules/ui-kit/utils";
 import { motion, useAnimation } from "motion/react";
 import { useCallback, useEffect, useImperativeHandle, useRef } from "react";
 
-export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, size, "data-hovered": hovered, ...props }: AnimatedPlusIconProps & { ref?: RefObject<PlusIconHandle | null> }) => {
+const pathVariants: Variants = {
+  normal: {
+    translateX: 0,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 13,
+    },
+  },
+  animate: {
+    translateX: [-6, 0],
+    transition: {
+      delay: 0.1,
+      type: "spring",
+      stiffness: 200,
+      damping: 13,
+    },
+  },
+};
+
+export const AnimatedUsersIcon = ({ ref, onMouseEnter, onMouseLeave, className, size, "data-hovered": hovered, ...props }: AnimatedUsersIconProps & { ref?: RefObject<UsersIconHandle | null> }) => {
   const controls = useAnimation();
+
   const isControlledRef = useRef(false);
 
   useImperativeHandle(ref, () => {
@@ -64,7 +86,7 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
 
   return (
     <div className={cn(className)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...props}>
-      <motion.svg
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
@@ -74,16 +96,17 @@ export const AnimatedPlusIcon = ({ ref, onMouseEnter, onMouseLeave, className, s
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        animate={controls}
-        transition={{ type: "spring", stiffness: 100, damping: 15 }}
-        variants={{ normal: { rotate: 0 }, animate: { rotate: 180 } }}
       >
-        <path d="M5 12h14" />
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
 
-        <path d="M12 5v14" />
-      </motion.svg>
+        <circle cx="9" cy="7" r="4" />
+
+        <motion.path d="M22 21v-2a4 4 0 0 0-3-3.87" variants={pathVariants} animate={controls} />
+
+        <motion.path d="M16 3.13a4 4 0 0 1 0 7.75" variants={pathVariants} animate={controls} />
+      </svg>
     </div>
   );
 };
 
-AnimatedPlusIcon.displayName = "AnimatedPlusIcon";
+AnimatedUsersIcon.displayName = "AnimatedUsersIcon";

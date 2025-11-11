@@ -2,6 +2,7 @@
 
 import type { AdminSidebarProps, AdminTabsTypeElement } from "./admin-sidebar.type";
 import type { Component } from "@core-modules/ui-kit/utils";
+import { AdminSidebarLink } from "./admin-sidebar-link";
 import { ADMIN_TABS } from "./admin-sidebar.config";
 import { XIcon } from "@core-modules/ui-kit/icons";
 import { Button } from "@core-modules/ui-kit/ui";
@@ -29,22 +30,11 @@ export const AdminSidebar: Component<AdminSidebarProps> = ({ activeTab, setActiv
             <XIcon size={16} />
           </Button>
 
-          {ADMIN_TABS.map((tab) => {
-            const Icon = tab.icon;
-
-            return (
-              <Button
-                key={tab.id}
-                variant={activeTab === tab.id ? "default" : "secondary"}
-                className="w-full justify-start gap-2"
-                onClick={() => handleTabChange(tab.id as AdminTabsTypeElement)}
-              >
-                <Icon size={16} />
-
-                <span className="truncate">{tab.label}</span>
-              </Button>
-            );
-          })}
+          {ADMIN_TABS.map((tab) => (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            <AdminSidebarLink key={tab.id} id={tab.id} icon={tab.icon} label={tab.label} activeTab={activeTab} handleTabChange={handleTabChange} />
+          ))}
         </nav>
       </aside>
     </>
