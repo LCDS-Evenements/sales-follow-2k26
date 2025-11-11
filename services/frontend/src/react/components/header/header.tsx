@@ -13,7 +13,7 @@ export const Header: Component = () => {
 
   return (
     <header className="border-b border-border bg-card">
-      <div className={cn("mx-auto py-6 px-8", pathname === "/admin" ? "px-8" : "container")}>
+      <div className={cn("mx-auto py-6 px-4", pathname === "/admin" ? "px-4" : "container")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex size-10 items-center justify-center rounded-md bg-primary/20">
