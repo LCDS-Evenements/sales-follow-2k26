@@ -163,7 +163,7 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
         return (
           <Tooltip>
             <div className="flex items-center justify-center">
-              <Button size="icon" className="h-7" onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
+              <Button size="sm" className="h-6 px-1!" onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
                 <AnimatedPlusIcon size={12} data-hovered={hovered} />
 
                 <UserIcon size={16} />

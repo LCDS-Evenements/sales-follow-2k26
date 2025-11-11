@@ -20,7 +20,7 @@ export const ToolbarFilter = <TData, _>({ column }: ToolbarFilterProps<TData>) =
             placeholder={columnMeta.placeholder ?? columnMeta.label}
             value={column.getFilterValue() as string}
             onChange={(event) => column.setFilterValue(event.target.value)}
-            className="w-72"
+            className="w-72 h-8"
           />
         );
 

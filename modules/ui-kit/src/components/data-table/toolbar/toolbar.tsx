@@ -23,7 +23,7 @@ export const Toolbar = <TData, _>({ table }: ToolbarProps<TData>) => {
         ))}
 
         {isFiltered && (
-          <Button variant="outline" size="sm" className="border-dashed border-red-500 bg-red-100 text-red-500 hover:bg-red-200" onClick={onReset}>
+          <Button variant="destructive" size="sm" onClick={onReset}>
             <XIcon size={16} className="mr-1" />
 
             Clear all filters

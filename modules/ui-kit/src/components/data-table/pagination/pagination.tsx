@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon 
 export const Pagination = <TData, _>({ table }: PaginationProps<TData>) => {
   return (
     <div className="flex items-center justify-end">
-      <div className="flex-1 text-sm text-neutral-500">
+      <div className="flex-1 text-sm">
         {table.getFilteredSelectedRowModel().rows.length}
 
         {" "}
@@ -26,7 +26,7 @@ export const Pagination = <TData, _>({ table }: PaginationProps<TData>) => {
           <p className="text-sm font-medium">Rows per page</p>
 
           <Select value={table.getState().pagination.pageSize.toString()} onValueChange={(value) => { table.setPageSize(Number(value)); }}>
-            <SelectTrigger className="h-8 w-[70px] bg-white">
+            <SelectTrigger className="!h-8 w-[70px]">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
 

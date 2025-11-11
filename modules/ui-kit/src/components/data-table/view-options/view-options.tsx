@@ -12,10 +12,10 @@ import {
   PopoverTrigger,
   Command,
   CommandItem,
+  Checkbox,
 } from "../../../ui";
 import { Sortable, SortableDragHandle, SortableItem } from "../../sortable";
-import { CheckIcon, GripVertical, Settings2Icon } from "@core-modules/ui-kit/icons";
-import { cn } from "@core-modules/ui-kit/utils";
+import { GripVertical, Settings2Icon } from "@core-modules/ui-kit/icons";
 import { run } from "@core-packages/effect";
 import { useMemo, useState } from "react";
 
@@ -69,16 +69,7 @@ export const ViewOptions = <TData, _>({ table, enableColumnOrdering }: ViewOptio
                         className="capitalize hover:bg-neutral-100"
                         disabled={drag}
                       >
-                        <div
-                          className={cn(
-                            "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                            column.getIsVisible()
-                              ? "bg-primary text-primary-foreground"
-                              : "opacity-50 [&_svg]:invisible",
-                          )}
-                        >
-                          <CheckIcon size={16} />
-                        </div>
+                        <Checkbox checked={column.getIsVisible()} />
 
                         <span className="font-medium">{column.columnDef.meta?.label || column.id}</span>
 
@@ -88,7 +79,7 @@ export const ViewOptions = <TData, _>({ table, enableColumnOrdering }: ViewOptio
                               <SortableDragHandle
                                 variant="ghost"
                                 size="icon"
-                                className="ml-auto size-5 text-muted-foreground hover:text-foreground hover:border-none focus:bg-muted focus:text-foreground"
+                                className="ml-auto size-5 text-muted-foreground hover:text-foreground hover:border-none focus:bg-muted focus:text-foreground cursor-grab"
                               >
                                 <GripVertical
                                   className="size-4"

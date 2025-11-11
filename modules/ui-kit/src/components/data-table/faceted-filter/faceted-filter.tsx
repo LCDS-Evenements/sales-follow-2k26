@@ -17,9 +17,9 @@ import {
   CommandGroup,
   CommandItem,
   CommandSeparator,
+  Checkbox,
 } from "../../../ui";
-import { CheckIcon, PlusCircleIcon, XCircleIcon } from "@core-modules/ui-kit/icons";
-import { cn } from "@core-modules/ui-kit/utils";
+import { PlusCircleIcon, XCircleIcon } from "@core-modules/ui-kit/icons";
 import { run } from "@core-packages/effect";
 import { createElement, useCallback, useMemo, useState } from "react";
 
@@ -57,7 +57,7 @@ export const FacetedFilter = <TData, TValue>({ column, title, options, multiple,
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="outline" size="sm" className="border-dashed bg-neutral-100">
+        <Button variant="outline" size="sm" className="border-dashed">
           {run(() => {
             if (selectedValues.size > 0) {
               return (
@@ -82,15 +82,15 @@ export const FacetedFilter = <TData, TValue>({ column, title, options, multiple,
 
           {selectedValues.size > 0 && (
             <>
-              <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4 bg-neutral-300" />
+              <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4" />
 
-              <Badge variant="secondary" className="rounded-sm px-1 font-normal lg:hidden bg-neutral-200 hover:bg-neutral-200">{selectedValues.size}</Badge>
+              <Badge variant="secondary" className="rounded-sm px-1 font-normal lg:hidden">{selectedValues.size}</Badge>
 
               <div className="hidden items-center gap-1 lg:flex">
                 {run(() => {
                   if (selectedValues.size > 2) {
                     return (
-                      <Badge variant="secondary" className="rounded-sm px-1 font-normal bg-neutral-200 hover:bg-neutral-200">
+                      <Badge variant="secondary" className="rounded-sm px-1 font-normal">
                         {selectedValues.size}
 
                         {" "}
@@ -103,7 +103,7 @@ export const FacetedFilter = <TData, TValue>({ column, title, options, multiple,
                   return options
                     .filter((option) => selectedValues.has(option.value))
                     .map((option) => (
-                      <Badge variant="secondary" key={option.value} className="rounded-sm px-1 font-normal bg-neutral-200 hover:bg-neutral-200">{option.label}</Badge>
+                      <Badge variant="secondary" key={option.value} className="rounded-sm px-1 font-normal">{option.label}</Badge>
                     ));
                 })}
               </div>
@@ -124,17 +124,8 @@ export const FacetedFilter = <TData, TValue>({ column, title, options, multiple,
                 const isSelected = selectedValues.has(option.value);
 
                 return (
-                  <CommandItem key={option.value} onSelect={() => onItemSelect(option, isSelected)} className="hover:bg-neutral-100 cursor-pointer">
-                    <div
-                      className={cn(
-                        "flex size-4 items-center justify-center rounded-sm border border-primary mr-2",
-                        isSelected
-                          ? "bg-primary text-primary-foreground"
-                          : "opacity-50 [&_svg]:invisible",
-                      )}
-                    >
-                      <CheckIcon />
-                    </div>
+                  <CommandItem key={option.value} onSelect={() => onItemSelect(option, isSelected)} className="cursor-pointer">
+                    <Checkbox checked={isSelected} />
 
                     {option.icon && <option.icon className="size-4 mr-1" />}
 

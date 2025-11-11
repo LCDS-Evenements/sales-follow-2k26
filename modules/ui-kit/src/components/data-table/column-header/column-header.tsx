@@ -15,15 +15,14 @@ export const ColumnHeader = <TData, TValue>({ column, title, className }: Column
       variant="ghost"
       size="sm"
       onClick={() => column.toggleSorting(undefined)}
-      className={cn("p-0 h-7 hover:border-none flex gap-4 items-center justify-start w-full", className)}
+      className={cn("p-0 hover:bg-transparent! flex gap-2 items-center justify-start w-full", className)}
     >
       <span className="font-semibold">{title}</span>
 
       <div className="flex flex-col">
         <ChevronUpIcon
-          size={12}
           className={cn(
-            "-mb-0.5",
+            "-mb-0.5 size-3",
             column.getIsSorted() === "asc"
               ? "text-accent-foreground"
               : "text-muted-foreground",
@@ -33,7 +32,7 @@ export const ColumnHeader = <TData, TValue>({ column, title, className }: Column
         <ChevronDownIcon
           size={12}
           className={cn(
-            "-mt-0.5",
+            "-mt-0.5 size-3",
             column.getIsSorted() === "desc"
               ? "text-accent-foreground"
               : "text-muted-foreground",

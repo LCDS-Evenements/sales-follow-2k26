@@ -75,7 +75,7 @@ export const SortList = <TData, _>({ table }: SortListProps<TData>) => {
           Sort
 
           {sorting.length > 0 && (
-            <Badge variant="outline" className="h-[18.24px] bg-neutral-100 rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px] ml-2">
+            <Badge variant="outline" className="h-[18.24px] rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px] ml-1">
               {sorting.length}
             </Badge>
           )}

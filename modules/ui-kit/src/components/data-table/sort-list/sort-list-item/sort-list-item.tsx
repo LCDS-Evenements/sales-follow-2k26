@@ -53,7 +53,7 @@ export const SortListItem = ({ sort, columns, columnLabels, onSortUpdate, onSort
                     key={column.id}
                     value={column.id}
                     onSelect={(value) => onSortUpdate(sort.id, { id: value })}
-                    className="hover:bg-neutral-100 cusror-pointer"
+                    className="cusror-pointer"
                   >
                     <span className="truncate capitalize">{column.label}</span>
                   </CommandItem>
@@ -70,13 +70,13 @@ export const SortListItem = ({ sort, columns, columnLabels, onSortUpdate, onSort
         value={sort.desc ? "desc" : "asc"}
         onValueChange={(value: SortDirection) => onSortUpdate(sort.id, { desc: value === "desc" })}
       >
-        <SelectTrigger className="rounded-md bg-white h-9 px-3">
+        <SelectTrigger className="rounded-md h-8! px-3">
           <SelectValue />
         </SelectTrigger>
 
         <SelectContent className="min-w-[var(--radix-select-trigger-width)] origin-[var(--radix-select-content-transform-origin)]">
           {sortOrders.map((order) => (
-            <SelectItem key={order.value} value={order.value}>{order.label}</SelectItem>
+            <SelectItem key={order.value} value={order.value} className="cursor-pointer!">{order.label}</SelectItem>
           ))}
         </SelectContent>
       </Select>

@@ -128,7 +128,7 @@ export const DateFilter = <TData, _>({ column, title, multiple }: DateFilterProp
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="border-dashed">
+        <Button variant="outline" className="border-dashed" size="sm">
           {run(() => {
             if (hasValue) {
               return (
