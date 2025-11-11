@@ -12,6 +12,7 @@
   "dependencies": {
     "@core-modules/ui-kit": "workspace:*",
     "@core-packages/effect": "workspace:*",
+    "@radix-ui/react-select": "^2.2.6",
     "@tanstack/react-table": "^8.21.3",
     "dayjs": "^1.11.19",
     "motion": "^12.23.24",

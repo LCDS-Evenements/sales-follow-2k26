@@ -1,6 +1,6 @@
 "use client";
 
-import type { Members } from "./members-table.type";
+import type { Member } from "./members-table.type";
 import type { ColumnDef } from "@tanstack/react-table";
 import { AnimatedPlusIcon, ColumnHeader } from "@core-modules/ui-kit/components";
 import { CalendarIcon, CheckIcon, CopyIcon, EllipsisIcon, EyeIcon, GraduationCap, GraduationCapIcon, PenIcon, ShieldIcon, TextIcon, TrashIcon, UserIcon } from "@core-modules/ui-kit/icons";
@@ -12,7 +12,7 @@ import { day } from "#/utils/day";
 import { useState } from "react";
 
 // This function is used to generate the columns for the members table.
-export const getMembersColumns = (): ColumnDef<Members>[] => {
+export const getMembersColumns = (): ColumnDef<Member>[] => {
   return [
     {
       id: "select",

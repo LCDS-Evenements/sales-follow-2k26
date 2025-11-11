@@ -12,14 +12,14 @@ export const ActionBarSelection = <TData, _>({ table }: ActionBarSelectionProps<
   }, [table]);
 
   return (
-    <div className="flex h-7 items-center rounded-md border pr-1 pl-2.5 bg-neutral-100">
+    <div className="flex h-7 items-center rounded-md border pr-1 pl-2.5">
       <span className="whitespace-nowrap text-xs">
         {run(() => {
-          if (table.getFilteredSelectedRowModel().rows.length >= 1) {
-            return `${String(table.getFilteredSelectedRowModel().rows.length)} selectionné`;
+          if (table.getFilteredSelectedRowModel().rows.length > 1) {
+            return `${String(table.getFilteredSelectedRowModel().rows.length)} selectionnées`;
           }
 
-          return `${String(table.getFilteredSelectedRowModel().rows.length)} selectionnés`;
+          return `${String(table.getFilteredSelectedRowModel().rows.length)} selectionnée`;
         })}
       </span>
 
@@ -27,12 +27,12 @@ export const ActionBarSelection = <TData, _>({ table }: ActionBarSelectionProps<
 
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon" className="size-5 hover:bg-neutral-200" onClick={onClearSelection}>
+          <Button variant="ghost" size="icon" className="size-5" onClick={onClearSelection}>
             <XIcon className="size-3.5" />
           </Button>
         </TooltipTrigger>
 
-        <TooltipContent sideOffset={10} className="flex items-center gap-2 border bg-accent px-2 py-1 font-semibold text-foreground dark:bg-zinc-900 [&>span]:hidden">
+        <TooltipContent sideOffset={10} className="flex items-center gap-2 border bg-accent px-2 py-1 font-semibold text-foreground [&>span]:hidden">
           <p>Clear</p>
         </TooltipContent>
       </Tooltip>

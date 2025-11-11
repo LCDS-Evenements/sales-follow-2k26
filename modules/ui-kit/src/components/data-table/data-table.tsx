@@ -48,11 +48,11 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
     <div className="flex w-full flex-col gap-2.5 overflow-auto">
       <Toolbar table={table} />
 
-      <div className="overflow-hidden rounded-lg border bg-card">
+      <div className="overflow-hidden rounded-lg border">
         <Table>
-          <TableHeader className="bg-muted">
+          <TableHeader className="bg-background">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="hover:bg-transparent">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -75,10 +75,10 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    className={cn(index !== table.getRowModel().rows.length - 1 && "border-b")}
+                    className={cn(index !== table.getRowModel().rows.length - 1 && "border-b", "cursor-pointer")}
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id} className="">{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                      <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                     ))}
                   </TableRow>
                 ));
@@ -88,7 +88,7 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
                 <TableRow>
                   <TableCell colSpan={columns.length} className="h-24 text-center">
                     <div className="flex flex-col items-center justify-center gap-2">
-                      <div className="bg-muted border rounded-lg p-2">
+                      <div className="border rounded-lg p-2">
                         {run(() => {
                           if (emptyIcon) {
                             return createElement(emptyIcon, { size: 16 });

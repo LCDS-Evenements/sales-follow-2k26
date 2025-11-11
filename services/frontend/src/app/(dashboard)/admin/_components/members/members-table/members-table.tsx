@@ -1,7 +1,8 @@
 "use client";
 
-import type { Members } from "./members-table.type";
+import type { Member } from "./members-table.type";
 import type { Component } from "@core-modules/ui-kit/utils";
+import { MembersTableActionBar } from "./members-table-action-bar";
 import { getMembersColumns } from "./members-table.columns";
 import { DataTable } from "@core-modules/ui-kit/components";
 import { UsersIcon } from "@core-modules/ui-kit/icons";
@@ -14,7 +15,7 @@ import {
 } from "@core-modules/ui-kit/ui";
 import { run } from "@core-packages/effect";
 
-const members: Members[] = [
+const members: Member[] = [
   {
     id: "a",
     firstname: "Hugo",
@@ -185,7 +186,7 @@ export const MembersTable: Component = () => {
           //   );
           // }
 
-          return <DataTable columns={columns} data={members} emptyIcon={UsersIcon} emptySentence="No members yet" />;
+          return <DataTable columns={columns} data={members} emptyIcon={UsersIcon} emptySentence="No members yet" actionBarContent={<MembersTableActionBar />} />;
         })}
       </CardContent>
     </Card>
