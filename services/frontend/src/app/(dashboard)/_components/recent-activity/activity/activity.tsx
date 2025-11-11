@@ -19,26 +19,28 @@ export const Activity: Component<ActivityProps> = ({ ago, label, type, amount, c
       </div>
 
       <ItemContent className="gap-0.5">
-        <ItemTitle className="font-semibold max-w-72 truncate">
-          [
-          {label}
-          ]
+        <ItemTitle>
+          <p className="font-semibold sm:max-w-72 max-w-60 truncate!">
+            [
+            {label}
+            ]
 
-          {" "}
+            {" "}
 
-          {run(() => {
-            if (type === "purchased") {
-              return "has been purchased";
-            }
+            {run(() => {
+              if (type === "purchased") {
+                return "has been purchased";
+              }
 
-            return "is sold out";
-          })}
+              return "is sold out";
+            })}
+          </p>
         </ItemTitle>
 
         {customer && <ItemDescription>{customer}</ItemDescription>}
       </ItemContent>
 
-      <ItemActions className="flex flex-col items-end gap-0">
+      <ItemActions className="flex flex-row-reverse sm:flex-col sm:items-end items-center justify-between w-full sm:w-auto gap-0">
         {amount && (
           <p className="font-bold text-base text-foreground font-mono">
             {amount}

@@ -29,7 +29,7 @@ export const Header: Component = () => {
           <div className="flex items-center gap-2">
             {pathname !== "/admin" && (
               <>
-                <Button variant="outline" className="relative" size="icon-sm">
+                <Button variant="outline" className="relative hidden sm:flex" size="icon-sm">
                   <BellIcon />
 
                   <Badge className="absolute -right-1 -top-1 size-4 rounded-full p-0 flex items-center justify-center text-xs font-mono">
@@ -51,7 +51,7 @@ export const Header: Component = () => {
               </>
             )}
 
-            <Profile className="ml-6" />
+            <Profile className="ml-2 sm:ml-6" />
           </div>
         </div>
       </div>

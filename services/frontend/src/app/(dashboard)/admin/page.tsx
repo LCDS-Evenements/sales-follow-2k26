@@ -19,7 +19,7 @@ const Admin: Component = () => {
     <div className="min-h-[calc(100vh-92px)] flex">
       <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} open={open} setOpen={setOpen} />
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-4 sm:p-8">
         <Button variant="outline" className="mb-8 md:hidden flex" onClick={() => setOpen(true)}>
           <MenuIcon />
 

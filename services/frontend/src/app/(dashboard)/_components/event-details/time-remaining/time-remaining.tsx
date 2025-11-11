@@ -130,25 +130,25 @@ export const TimeRemaining: Component<TimeRemainingProps> = ({ date }) => {
         </div>
 
         <div className="flex items-center gap-1">
-          <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
+          <div className="flex items-center justify-center flex-col bg-background border py-1 px-1 sm:px-2 rounded-md">
             <p className="text-xs font-semibold font-mono">{timeRemaining.days}</p>
 
             <p className="text-xs text-foreground">DAYS</p>
           </div>
 
-          <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
+          <div className="flex items-center justify-center flex-col bg-background border py-1 px-1 sm:px-2 rounded-md">
             <p className="text-xs font-semibold font-mono">{timeRemaining.hours}</p>
 
             <p className="text-xs text-foreground">HRS</p>
           </div>
 
-          <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
+          <div className="flex items-center justify-center flex-col bg-background border py-1 px-1 sm:px-2 rounded-md">
             <p className="text-xs font-semibold font-mono">{timeRemaining.minutes}</p>
 
             <p className="text-xs text-foreground">MINS</p>
           </div>
 
-          <div className="flex items-center justify-center flex-col bg-background border py-1 px-2 rounded-md">
+          <div className="flex items-center justify-center flex-col bg-background border py-1 px-1 sm:px-2 rounded-md">
             <p className="text-xs font-semibold font-mono">{timeRemaining.seconds}</p>
 
             <p className="text-xs text-foreground">SECS</p>
