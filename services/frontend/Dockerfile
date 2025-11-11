@@ -37,7 +37,7 @@ ENV PORT=3000
 
 # Copy only necessary files from the build stage:
 COPY --from=builder /app/services/frontend/.next/standalone ./
-COPY --from=builder /app/services/frontend/public ./services/frontend/public
+# COPY --from=builder /app/services/frontend/public ./services/frontend/public
 COPY --from=builder /app/services/frontend/.next/static ./services/frontend/.next/static
 
 # Run the server:
