@@ -18,9 +18,11 @@ export const Toolbar = <TData, _>({ table }: ToolbarProps<TData>) => {
   return (
     <div className="flex w-full items-start justify-between gap-2 p-1">
       <div className="flex flex-1 justify-start items-center gap-2">
-        {columns.map((column) => (
-          <ToolbarFilter key={column.id} column={column} />
-        ))}
+        <div className="hidden lg:contents">
+          {columns.map((column) => (
+            <ToolbarFilter key={column.id} column={column} />
+          ))}
+        </div>
 
         {isFiltered && (
           <Button variant="destructive" size="sm" onClick={onReset}>
@@ -31,7 +33,7 @@ export const Toolbar = <TData, _>({ table }: ToolbarProps<TData>) => {
         )}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="items-center gap-2 hidden lg:flex">
         <SortList table={table} />
 
         <ViewOptions table={table} enableColumnOrdering />

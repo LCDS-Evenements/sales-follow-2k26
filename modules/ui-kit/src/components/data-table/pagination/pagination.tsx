@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon 
 export const Pagination = <TData, _>({ table }: PaginationProps<TData>) => {
   return (
     <div className="flex items-center justify-end">
-      <div className="flex-1 text-sm">
+      <div className="flex-1 text-sm hidden lg:flex">
         {table.getFilteredSelectedRowModel().rows.length}
 
         {" "}
@@ -40,7 +40,7 @@ export const Pagination = <TData, _>({ table }: PaginationProps<TData>) => {
           </Select>
         </div>
 
-        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
+        <div className="flex w-[100px] items-center justify-center text-sm font-medium hidden lg:flex">
           Page
 
           {" "}

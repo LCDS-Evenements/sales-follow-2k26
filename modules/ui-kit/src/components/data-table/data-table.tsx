@@ -45,10 +45,10 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
   const rows = table.getFilteredSelectedRowModel().rows;
 
   return (
-    <div className="flex w-full flex-col gap-2.5 overflow-auto">
+    <div className="flex w-full flex-col overflow-auto">
       <Toolbar table={table} />
 
-      <div className="overflow-hidden rounded-lg border">
+      <div className="overflow-hidden rounded-lg border lg:mt-2.5 mb-2.5">
         <Table>
           <TableHeader className="bg-background">
             {table.getHeaderGroups().map((headerGroup) => (
