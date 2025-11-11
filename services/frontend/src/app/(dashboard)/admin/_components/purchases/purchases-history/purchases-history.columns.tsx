@@ -1,47 +1,41 @@
 "use client";
 
-import type { Member } from "./members-table.type";
+import type { Purchase } from "./purchases-history.type";
 import type { ColumnDef } from "@tanstack/react-table";
+import { StatusBadge } from "./status-badge";
 import { AnimatedPlusIcon, ColumnHeader } from "@core-modules/ui-kit/components";
 import {
   CalendarIcon,
   CheckIcon,
+  CircleCheckBigIcon,
+  CircleDashedIcon,
   CopyIcon,
   EllipsisIcon,
-  EyeIcon,
-  GraduationCap,
-  GraduationCapIcon,
   PenIcon,
-  ShieldIcon,
+  ServerIcon,
   TextIcon,
+  TicketXIcon,
   TrashIcon,
   UserIcon,
 } from "@core-modules/ui-kit/icons";
 import { toast } from "@core-modules/ui-kit/sonner";
 import {
-  Badge,
   Button,
   Checkbox,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   Tooltip,
 } from "@core-modules/ui-kit/ui";
-import { run } from "@core-packages/effect";
 import { useCopyToClipboard } from "#/react/hooks/clipboard";
 import { day } from "#/utils/day";
 import { useState } from "react";
 
-// This function is used to generate the columns for the members table.
-export const getMembersColumns = (): ColumnDef<Member>[] => {
+// This function is used to generate the columns for the purchases table.
+export const getPurchasesColumns = (): ColumnDef<Purchase>[] => {
   return [
     {
       id: "select",
@@ -66,6 +60,16 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
       enableHiding: false,
     },
     {
+      id: "customer",
+      accessorKey: "customer",
+      header: ({ column }) => (
+        <ColumnHeader column={column} title="Customer" />
+      ),
+      meta: {
+        label: "Customer",
+      },
+    },
+    {
       id: "email",
       accessorKey: "email",
       header: ({ column }) => (
@@ -87,88 +91,73 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
       enableColumnFilter: true,
     },
     {
-      id: "firstname",
-      accessorKey: "firstname",
+      id: "ticket",
+      accessorKey: "ticket",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Firstname" />
+        <ColumnHeader column={column} title="Ticket" />
       ),
-      enableSorting: false,
-      meta: {
-        label: "Firstname",
-      },
     },
     {
-      id: "lastname",
-      accessorKey: "lastname",
+      id: "quantity",
+      accessorKey: "quantity",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Lastname" />
+        <ColumnHeader column={column} title="quantity" />
       ),
-      enableSorting: false,
       meta: {
-        label: "Lastname",
+        variant: "number",
+        unit: "qty",
+        label: "Quantity",
       },
+      enableSorting: true,
+      enableColumnFilter: true,
     },
     {
-      id: "createdAt",
-      accessorKey: "createdAt",
+      id: "amount",
+      accessorKey: "amount",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Created at" />
+        <ColumnHeader column={column} title="Amount" />
+      ),
+      meta: {
+        variant: "range",
+        label: "Amount",
+      },
+      enableSorting: true,
+      enableColumnFilter: true,
+    },
+    {
+      id: "purchasedAt",
+      accessorKey: "purchasedAt",
+      header: ({ column }) => (
+        <ColumnHeader column={column} title="Purchased at" />
       ),
       cell: ({ cell }) => day(cell.getValue<Date>()).format("ll"),
       meta: {
-        label: "Created at",
+        label: "Purchased at",
         variant: "dateRange",
         icon: CalendarIcon,
       },
       enableColumnFilter: true,
     },
     {
-      id: "lastTimeConnected",
-      accessorKey: "lastTimeConnected",
+      id: "status",
+      accessorKey: "status",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Last time connected" />
-      ),
-      cell: ({ cell }) => day(cell.getValue<Date>()).format("lll"),
-      meta: {
-        label: "Last time connected",
-        variant: "dateRange",
-        icon: CalendarIcon,
-      },
-      enableColumnFilter: true,
-    },
-    {
-      id: "role",
-      accessorKey: "role",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Role" />
+        <ColumnHeader column={column} title="Status" />
       ),
       cell: ({ cell }) => {
-        const role = cell.getValue<string>();
+        const status = cell.getValue<"completed" | "pending" | "refunded">();
 
-        return (
-          <Badge variant="secondary" className="uppercase">
-            {run(() => {
-              if (role === "manager") {
-                return <ShieldIcon />;
-              }
-
-              return <EyeIcon />;
-            })}
-
-            {" "}
-
-            {role}
-          </Badge>
-        );
+        return <StatusBadge status={status} />;
       },
       meta: {
-        label: "Role",
+        label: "Status",
         variant: "select",
         options: [
-          { label: "Manager", value: "manager", count: 0, icon: ShieldIcon },
-          { label: "Viewer", value: "viewer", count: 0, icon: EyeIcon },
+          { label: "Completed", value: "completed", count: 0, icon: CircleCheckBigIcon },
+          { label: "Pending", value: "pending", count: 0, icon: CircleDashedIcon },
+          { label: "refunded", value: "Refunded", count: 0, icon: TicketXIcon },
         ],
-        icon: GraduationCapIcon,
+        icon: ServerIcon,
       },
       enableColumnFilter: true,
     },
@@ -190,18 +179,14 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
         );
       },
       cell: function Cell({ row }) {
-        const firstname = row.getValue<string>("firstname");
-
-        const lastname = row.getValue<string>("lastname");
-
-        const role = row.getValue<string>("role");
+        const customer = row.getValue<string>("customer");
 
         const { copyToClipboard, isCopied } = useCopyToClipboard();
 
         const copy = () => {
-          copyToClipboard(row.original.id);
+          copyToClipboard(row.original.orderID);
 
-          toast.info("Member ID copied to clipboard");
+          toast.info("Order ID copied to clipboard");
         };
 
         return (
@@ -214,13 +199,7 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent>
-                <DropdownMenuLabel>
-                  {firstname}
-
-                  {" "}
-
-                  {lastname}
-                </DropdownMenuLabel>
+                <DropdownMenuLabel>{customer}</DropdownMenuLabel>
 
                 <DropdownMenuSeparator />
 
@@ -235,25 +214,6 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
 
                   Edit
                 </DropdownMenuItem>
-
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>
-                    <GraduationCap className="mr-2" />
-
-                    Role
-                  </DropdownMenuSubTrigger>
-
-                  <DropdownMenuSubContent>
-                    <DropdownMenuRadioGroup value={role}>
-                      <DropdownMenuRadioItem value="manager" className="capitalize cursor-pointer">
-                        Manager
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="viewer" className="capitalize cursor-pointer">
-                        Viewer
-                      </DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuSubContent>
-                </DropdownMenuSub>
 
                 <DropdownMenuSeparator />
 

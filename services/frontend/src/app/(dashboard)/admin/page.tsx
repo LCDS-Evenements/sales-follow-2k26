@@ -2,6 +2,7 @@
 
 import type { Component } from "@core-modules/ui-kit/utils";
 import { Members } from "./_components/members";
+import { Purchases } from "./_components/purchases";
 import { Settings } from "./_components/settings";
 import { MenuIcon } from "@core-modules/ui-kit/icons";
 import { Button } from "@core-modules/ui-kit/ui";
@@ -28,6 +29,8 @@ const Admin: Component = () => {
         {activeTab === AdminTabsType.Settings && <Settings />}
 
         {activeTab === AdminTabsType.Members && <Members />}
+
+        {activeTab === AdminTabsType.Purchases && <Purchases />}
       </div>
     </div>
   );
