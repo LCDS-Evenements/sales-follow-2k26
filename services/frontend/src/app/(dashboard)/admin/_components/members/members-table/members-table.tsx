@@ -154,7 +154,18 @@ const members: Member[] = [
 ];
 
 export const MembersTable: Component = () => {
-  const columns = getMembersColumns();
+  const columns = getMembersColumns({
+    roleCounts: (["manager", "viewer"] as const).reduce<Record<Member["role"], number>>((acc, role) => {
+      acc[role] = members.reduce((count, item) => {
+        if (item.role === role) {
+          count += 1;
+        }
+
+        return count;
+      }, 0);
+      return acc;
+    }, {} as Record<Member["role"], number>),
+  });
 
   return (
     <Card className="py-4 md:py-6">

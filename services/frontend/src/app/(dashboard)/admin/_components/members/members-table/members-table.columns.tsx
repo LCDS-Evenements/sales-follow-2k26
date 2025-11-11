@@ -40,8 +40,12 @@ import { useCopyToClipboard } from "#/react/hooks/clipboard";
 import { day } from "#/utils/day";
 import { useState } from "react";
 
+type GetMembersColumnsProps = {
+  roleCounts: Record<Member["role"], number>;
+};
+
 // This function is used to generate the columns for the members table.
-export const getMembersColumns = (): ColumnDef<Member>[] => {
+export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): ColumnDef<Member>[] => {
   return [
     {
       id: "select",
@@ -165,8 +169,8 @@ export const getMembersColumns = (): ColumnDef<Member>[] => {
         label: "Role",
         variant: "select",
         options: [
-          { label: "Manager", value: "manager", count: 0, icon: ShieldIcon },
-          { label: "Viewer", value: "viewer", count: 0, icon: EyeIcon },
+          { label: "Manager", value: "manager", count: roleCounts.manager, icon: ShieldIcon },
+          { label: "Viewer", value: "viewer", count: roleCounts.manager, icon: EyeIcon },
         ],
         icon: GraduationCapIcon,
       },

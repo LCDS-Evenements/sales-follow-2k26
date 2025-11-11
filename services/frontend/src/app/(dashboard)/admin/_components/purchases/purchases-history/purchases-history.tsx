@@ -50,7 +50,18 @@ const purchases: Purchase[] = [
 ];
 
 export const PurchasesHistory: Component = () => {
-  const columns = getPurchasesColumns();
+  const columns = getPurchasesColumns({
+    statusCounts: (["completed", "pending", "refunded"] as const).reduce<Record<Purchase["status"], number>>((acc, status) => {
+      acc[status] = purchases.reduce((count, item) => {
+        if (item.status === status) {
+          count += 1;
+        }
+
+        return count;
+      }, 0);
+      return acc;
+    }, {} as Record<Purchase["status"], number>),
+  });
 
   return (
     <Card className="py-4 md:py-6">

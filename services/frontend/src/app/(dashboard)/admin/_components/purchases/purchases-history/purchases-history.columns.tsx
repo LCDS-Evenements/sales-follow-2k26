@@ -34,8 +34,12 @@ import { useCopyToClipboard } from "#/react/hooks/clipboard";
 import { day } from "#/utils/day";
 import { useState } from "react";
 
+type GetPurchasesColumnsProps = {
+  statusCounts: Record<Purchase["status"], number>;
+};
+
 // This function is used to generate the columns for the purchases table.
-export const getPurchasesColumns = (): ColumnDef<Purchase>[] => {
+export const getPurchasesColumns = ({ statusCounts }: GetPurchasesColumnsProps): ColumnDef<Purchase>[] => {
   return [
     {
       id: "select",
@@ -153,9 +157,9 @@ export const getPurchasesColumns = (): ColumnDef<Purchase>[] => {
         label: "Status",
         variant: "select",
         options: [
-          { label: "Completed", value: "completed", count: 0, icon: CircleCheckBigIcon },
-          { label: "Pending", value: "pending", count: 0, icon: CircleDashedIcon },
-          { label: "refunded", value: "Refunded", count: 0, icon: TicketXIcon },
+          { label: "Completed", value: "completed", count: statusCounts.completed, icon: CircleCheckBigIcon },
+          { label: "Pending", value: "pending", count: statusCounts.pending, icon: CircleDashedIcon },
+          { label: "refunded", value: "Refunded", count: statusCounts.refunded, icon: TicketXIcon },
         ],
         icon: ServerIcon,
       },
