@@ -11,7 +11,7 @@ import { SquareDashedIcon } from "@core-modules/ui-kit/icons";
 import { cn } from "@core-modules/ui-kit/utils";
 import { run } from "@core-packages/effect";
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import { createElement, isValidElement } from "react";
 
 export const DataTable = <TData, TValue>({ columns, data, actionBarContent, emptyIcon, emptySentence }: DataTableProps<TData, TValue>) => {
@@ -56,10 +56,10 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
-                      {run(async () => {
+                      {run(() => {
                         if (header.isPlaceholder) return null;
 
-                        return flexRender(header.column.columnDef.header, header.getContext());
+                        return flexRender(header.column.columnDef.header, header.getContext()) as ReactElement;
                       })}
                     </TableHead>
                   );

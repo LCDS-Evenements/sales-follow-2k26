@@ -5,7 +5,7 @@ export default eslintConfig(
     typescript: { tsconfigPath: "./tsconfig.json" },
   },
   {
-    ignores: ["src/ui", "src/hooks", "src/components/sortable"],
+    ignores: ["src/ui", "src/hooks", "src/components/sortable", "src/components/hitbox"],
   },
   {
     rules: {

@@ -1,8 +1,6 @@
 import type { Component } from "@core-modules/ui-kit/utils";
 
 export const TailwindIndicator: Component = () => {
-  if (process.env.NODE_ENV === "production") return <></>;
-
   return (
     <div className="fixed top-0 left-0 z-50 bg-primary text-white shadow-md px-2 rounded-br font-mono">
       <span className="sm:hidden">default</span>

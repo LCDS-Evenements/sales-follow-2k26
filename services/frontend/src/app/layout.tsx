@@ -1,7 +1,7 @@
 import type { Component, PropsWithChildren } from "@core-modules/ui-kit/utils";
 import type { Metadata, Viewport } from "next";
+import { TailwindIndicator } from "@core-modules/ui-kit/components";
 import { Toaster } from "@core-modules/ui-kit/ui";
-import { TailwindIndicator } from "#/react/components/tailwind-indicator";
 import { ThemeProvider } from "#/react/providers/theme-provider";
 import "./globals.css";
 

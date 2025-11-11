@@ -95,7 +95,7 @@ export const DateFilter = <TData, _>({ column, title, multiple }: DateFilterProp
 
           {hasSelectedDates && (
             <>
-              <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4 bg-neutral-300" />
+              <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4" />
 
               <span>{dateText}</span>
             </>
@@ -116,7 +116,7 @@ export const DateFilter = <TData, _>({ column, title, multiple }: DateFilterProp
         <span>{title}</span>
         {hasSelectedDate && (
           <>
-            <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4 bg-neutral-300" />
+            <Separator orientation="vertical" className="mx-1 data-[orientation=vertical]:h-4" />
 
             <span>{dateText}</span>
           </>
@@ -128,7 +128,7 @@ export const DateFilter = <TData, _>({ column, title, multiple }: DateFilterProp
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" size="sm" className="border-dashed bg-neutral-100">
+        <Button variant="outline" className="border-dashed">
           {run(() => {
             if (hasValue) {
               return (

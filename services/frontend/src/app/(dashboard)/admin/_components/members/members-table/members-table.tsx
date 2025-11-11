@@ -1,4 +1,10 @@
+"use client";
+
+import type { Members } from "./members-table.type";
 import type { Component } from "@core-modules/ui-kit/utils";
+import { getMembersColumns } from "./members-table.columns";
+import { DataTable } from "@core-modules/ui-kit/components";
+import { UsersIcon } from "@core-modules/ui-kit/icons";
 import {
   Card,
   CardContent,
@@ -6,8 +12,179 @@ import {
   CardHeader,
   CardTitle,
 } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
+
+const members: Members[] = [
+  {
+    id: "a",
+    firstname: "Hugo",
+    lastname: "CAMPOS",
+    email: "hugo.campos@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "manager",
+    active: true,
+    slider: 100,
+  },
+  {
+    id: "b",
+    firstname: "Sophie",
+    lastname: "MARTIN",
+    email: "sophie.martin@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 75,
+  },
+  {
+    id: "c",
+    firstname: "Thomas",
+    lastname: "DUBOIS",
+    email: "thomas.dubois@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 80,
+  },
+  {
+    id: "d",
+    firstname: "Marie",
+    lastname: "ROUSSEAU",
+    email: "marie.rousseau@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: false,
+    slider: 45,
+  },
+  {
+    id: "e",
+    firstname: "Lucas",
+    lastname: "BERNARD",
+    email: "lucas.bernard@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 90,
+  },
+  {
+    id: "f",
+    firstname: "Emma",
+    lastname: "PETIT",
+    email: "emma.petit@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 65,
+  },
+  {
+    id: "g",
+    firstname: "Nathan",
+    lastname: "ROBERT",
+    email: "nathan.robert@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: false,
+    slider: 30,
+  },
+  {
+    id: "h",
+    firstname: "Léa",
+    lastname: "RICHARD",
+    email: "lea.richard@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 85,
+  },
+  {
+    id: "i",
+    firstname: "Antoine",
+    lastname: "DURAND",
+    email: "antoine.durand@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 70,
+  },
+  {
+    id: "j",
+    firstname: "Chloé",
+    lastname: "MOREAU",
+    email: "chloe.moreau@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 95,
+  },
+  {
+    id: "k",
+    firstname: "Maxime",
+    lastname: "SIMON",
+    email: "maxime.simon@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: false,
+    slider: 20,
+  },
+  {
+    id: "l",
+    firstname: "Camille",
+    lastname: "LAURENT",
+    email: "camille.laurent@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 60,
+  },
+  {
+    id: "m",
+    firstname: "Arthur",
+    lastname: "MICHEL",
+    email: "arthur.michel@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 88,
+  },
+  {
+    id: "n",
+    firstname: "Julie",
+    lastname: "LEFEVRE",
+    email: "julie.lefevre@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: true,
+    slider: 72,
+  },
+  {
+    id: "o",
+    firstname: "Alexandre",
+    lastname: "GARNIER",
+    email: "alexandre.garnier@cuicuitedays.fr",
+    createdAt: Date.now(),
+    lastTimeConnected: Date.now(),
+    role: "viewer",
+    active: false,
+    slider: 55,
+  },
+];
 
 export const MembersTable: Component = () => {
+  const columns = getMembersColumns();
+
   return (
     <Card className="py-4 md:py-6">
       <CardHeader className="px-4 md:px-6">
@@ -17,7 +194,29 @@ export const MembersTable: Component = () => {
       </CardHeader>
 
       <CardContent className="px-4 md:px-6">
-        hello world
+        {run(() => {
+          // if (loading) {
+          //   return (
+          //     <DataTableSkeleton
+          //       columnCount={7}
+          //       filterCount={2}
+          //       rowCount={9}
+          //       cellWidths={[
+          //         "10rem",
+          //         "30rem",
+          //         "10rem",
+          //         "10rem",
+          //         "6rem",
+          //         "6rem",
+          //         "6rem",
+          //       ]}
+          //       shrinkZero
+          //     />
+          //   );
+          // }
+
+          return <DataTable columns={columns} data={members} emptyIcon={UsersIcon} emptySentence="No members yet" />;
+        })}
       </CardContent>
     </Card>
   );
