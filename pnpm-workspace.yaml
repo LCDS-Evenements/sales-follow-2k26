@@ -2,3 +2,4 @@ packages:
   - "modules/*"
   - "packages/*"
   - "services/*"
+  - "others/*"
