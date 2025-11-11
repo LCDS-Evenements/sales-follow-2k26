@@ -14,6 +14,8 @@ export const Pagination = <TData, _>({ table }: PaginationProps<TData>) => {
 
         of
 
+        {" "}
+
         {table.getFilteredRowModel().rows.length}
 
         {" "}

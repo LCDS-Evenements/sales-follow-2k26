@@ -6,6 +6,4 @@ export type Members = {
   createdAt: number;
   role: "manager" | "viewer";
   lastTimeConnected: number;
-  active: boolean;
-  slider: number;
 };

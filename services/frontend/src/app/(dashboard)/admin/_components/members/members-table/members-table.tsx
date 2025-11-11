@@ -23,8 +23,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "manager",
-    active: true,
-    slider: 100,
   },
   {
     id: "b",
@@ -34,8 +32,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 75,
   },
   {
     id: "c",
@@ -45,8 +41,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 80,
   },
   {
     id: "d",
@@ -56,8 +50,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: false,
-    slider: 45,
   },
   {
     id: "e",
@@ -67,8 +59,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 90,
   },
   {
     id: "f",
@@ -78,8 +68,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 65,
   },
   {
     id: "g",
@@ -89,8 +77,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: false,
-    slider: 30,
   },
   {
     id: "h",
@@ -100,8 +86,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 85,
   },
   {
     id: "i",
@@ -111,8 +95,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 70,
   },
   {
     id: "j",
@@ -122,8 +104,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 95,
   },
   {
     id: "k",
@@ -133,8 +113,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: false,
-    slider: 20,
   },
   {
     id: "l",
@@ -144,8 +122,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 60,
   },
   {
     id: "m",
@@ -155,8 +131,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 88,
   },
   {
     id: "n",
@@ -166,8 +140,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: true,
-    slider: 72,
   },
   {
     id: "o",
@@ -177,8 +149,6 @@ const members: Members[] = [
     createdAt: Date.now(),
     lastTimeConnected: Date.now(),
     role: "viewer",
-    active: false,
-    slider: 55,
   },
 ];
 

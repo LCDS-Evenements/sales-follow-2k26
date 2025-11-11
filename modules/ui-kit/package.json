@@ -7,7 +7,8 @@
     "./utils": "./src/utils/index.ts",
     "./icons": "./src/icons.ts",
     "./config": "./src/config/style.css",
-    "./components": "./src/components/index.ts"
+    "./components": "./src/components/index.ts",
+    "./sonner": "./src/sonner.ts"
   },
   "scripts": {
     "lint": "eslint .",

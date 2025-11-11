@@ -2,9 +2,12 @@
 
 import type { Members } from "./members-table.type";
 import type { ColumnDef } from "@tanstack/react-table";
-import { AnimatedPlusIcon, ColumnHeader, BooleanVariants } from "@core-modules/ui-kit/components";
-import { CalendarIcon, CheckIcon, EllipsisIcon, EyeIcon, GraduationCapIcon, ShieldIcon, TextIcon, UserIcon, XIcon } from "@core-modules/ui-kit/icons";
-import { Button, Checkbox, DropdownMenu, DropdownMenuTrigger, Tooltip } from "@core-modules/ui-kit/ui";
+import { AnimatedPlusIcon, ColumnHeader } from "@core-modules/ui-kit/components";
+import { CalendarIcon, CheckIcon, CopyIcon, EllipsisIcon, EyeIcon, GraduationCap, GraduationCapIcon, PenIcon, ShieldIcon, TextIcon, TrashIcon, UserIcon } from "@core-modules/ui-kit/icons";
+import { toast } from "@core-modules/ui-kit/sonner";
+import { Badge, Button, Checkbox, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger, Tooltip } from "@core-modules/ui-kit/ui";
+import { run } from "@core-packages/effect";
+import { useCopyToClipboard } from "#/react/hooks/clipboard";
 import { day } from "#/utils/day";
 import { useState } from "react";
 
@@ -39,8 +42,8 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
       header: ({ column }) => (
         <ColumnHeader column={column} title="Email" />
       ),
-      cell: ({ row }) => {
-        const email = row.getValue<string>("email");
+      cell: ({ cell }) => {
+        const email = cell.getValue<string>();
 
         return (
           <p className="lowercase">{email}</p>
@@ -96,33 +99,11 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
       header: ({ column }) => (
         <ColumnHeader column={column} title="Last time connected" />
       ),
-      cell: ({ cell }) => day(cell.getValue<Date>()).format("ll"),
+      cell: ({ cell }) => day(cell.getValue<Date>()).format("lll"),
       meta: {
         label: "Last time connected",
         variant: "dateRange",
         icon: CalendarIcon,
-      },
-      enableColumnFilter: true,
-    },
-    {
-      id: "active",
-      accessorKey: "active",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Active" />
-      ),
-      cell: ({ cell }) => {
-        const value = cell.getValue<Members["active"]>();
-        const booleanVariant = (Object.values(BooleanVariants as Record<string, boolean>)).find(
-          (variant) => variant === value,
-        );
-
-        if (!booleanVariant) return <XIcon size={20} className="text-red-500" />;
-
-        return <CheckIcon size={20} className="text-green-500" />;
-      },
-      meta: {
-        label: "Active",
-        variant: "boolean",
       },
       enableColumnFilter: true,
     },
@@ -132,6 +113,25 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
       header: ({ column }) => (
         <ColumnHeader column={column} title="Role" />
       ),
+      cell: ({ cell }) => {
+        const role = cell.getValue<string>();
+
+        return (
+          <Badge variant="secondary" className="uppercase">
+            {run(() => {
+              if (role === "manager") {
+                return <ShieldIcon />;
+              }
+
+              return <EyeIcon />;
+            })}
+
+            {" "}
+
+            {role}
+          </Badge>
+        );
+      },
       meta: {
         label: "Role",
         variant: "select",
@@ -140,18 +140,6 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
           { label: "Viewer", value: "viewer", count: 0, icon: EyeIcon },
         ],
         icon: GraduationCapIcon,
-      },
-      enableColumnFilter: true,
-    },
-    {
-      id: "slider",
-      accessorKey: "slider",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Slider" />
-      ),
-      meta: {
-        label: "Slider",
-        variant: "range",
       },
       enableColumnFilter: true,
     },
@@ -172,7 +160,21 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
           </Tooltip>
         );
       },
-      cell: function Cell() {
+      cell: function Cell({ row }) {
+        const firstname = row.getValue<string>("firstname");
+
+        const lastname = row.getValue<string>("lastname");
+
+        const role = row.getValue<string>("role");
+
+        const { copyToClipboard, isCopied } = useCopyToClipboard();
+
+        const copy = () => {
+          copyToClipboard(row.original.id);
+
+          toast.info("Member ID copied to clipboard");
+        };
+
         return (
           <div className="flex items-center justify-center">
             <DropdownMenu>
@@ -181,6 +183,57 @@ export const getMembersColumns = (): ColumnDef<Members>[] => {
                   <EllipsisIcon size={16} />
                 </Button>
               </DropdownMenuTrigger>
+
+              <DropdownMenuContent>
+                <DropdownMenuLabel>
+                  {firstname}
+
+                  {" "}
+
+                  {lastname}
+                </DropdownMenuLabel>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem onClick={() => copy()}>
+                  {isCopied ? <CheckIcon /> : <CopyIcon />}
+
+                  Copy ID
+                </DropdownMenuItem>
+
+                <DropdownMenuItem>
+                  <PenIcon />
+
+                  Edit
+                </DropdownMenuItem>
+
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <GraduationCap className="mr-2" />
+
+                    Role
+                  </DropdownMenuSubTrigger>
+
+                  <DropdownMenuSubContent>
+                    <DropdownMenuRadioGroup value={role}>
+                      <DropdownMenuRadioItem value="manager" className="capitalize cursor-pointer">
+                        Manager
+                      </DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="viewer" className="capitalize cursor-pointer">
+                        Viewer
+                      </DropdownMenuRadioItem>
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem variant="destructive">
+                  <TrashIcon />
+
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
             </DropdownMenu>
           </div>
         );

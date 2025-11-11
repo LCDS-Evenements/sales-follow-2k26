@@ -78,7 +78,7 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
                     className={cn(index !== table.getRowModel().rows.length - 1 && "border-b")}
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id} className="px-5 py-3">{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                      <TableCell key={cell.id} className="">{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                     ))}
                   </TableRow>
                 ));
@@ -86,9 +86,9 @@ export const DataTable = <TData, TValue>({ columns, data, actionBarContent, empt
 
               return (
                 <TableRow>
-                  <TableCell colSpan={columns.length} className="h-18 text-center">
+                  <TableCell colSpan={columns.length} className="h-24 text-center">
                     <div className="flex flex-col items-center justify-center gap-2">
-                      <div className="bg-muted border rounded-lg p-1.5">
+                      <div className="bg-muted border rounded-lg p-2">
                         {run(() => {
                           if (emptyIcon) {
                             return createElement(emptyIcon, { size: 16 });
