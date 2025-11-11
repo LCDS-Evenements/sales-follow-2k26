@@ -3,7 +3,6 @@ import { TimeRemaining } from "./time-remaining";
 import { ArrowRightIcon, CalendarIcon, PinIcon } from "@core-modules/ui-kit/icons";
 import { Card } from "@core-modules/ui-kit/ui";
 import { day } from "#/utils/day";
-import { envClient } from "#/utils/env/client";
 import Link from "next/link";
 
 export const EventDetails: Component = () => {
@@ -48,7 +47,7 @@ export const EventDetails: Component = () => {
         </div>
       </Card>
 
-      <TimeRemaining date={day(envClient.NEXT_PUBLIC_EVENT_DATE).toDate()} />
+      <TimeRemaining date={day("2026-06-12").toDate()} />
     </div>
   );
 };

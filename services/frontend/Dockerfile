@@ -22,7 +22,6 @@ COPY ./services/frontend/ ./services/frontend/
 RUN pnpm install --frozen-lockfile
 
 # Use environment variables (Railway):
-ARG NEXT_PUBLIC_FRONTEND_URL
 
 RUN pnpm --filter=@core-services/frontend run build
 
