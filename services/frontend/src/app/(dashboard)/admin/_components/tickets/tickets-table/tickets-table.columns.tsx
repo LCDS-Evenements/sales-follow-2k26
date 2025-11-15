@@ -1,25 +1,25 @@
 "use client";
 
-import type { Member } from "./members-table.type";
+import type { Ticket } from "./tickets-table.type";
 import type { ColumnDef } from "@tanstack/react-table";
+import { StatusBadge } from "./status-badge";
 import { AnimatedPlusIcon, ColumnHeader } from "@core-modules/ui-kit/components";
 import {
-  CalendarIcon,
   CheckIcon,
+  ClockIcon,
   CopyIcon,
   EllipsisIcon,
-  EyeIcon,
-  GraduationCap,
-  GraduationCapIcon,
+  FlameIcon,
   PenIcon,
-  ShieldIcon,
+  ServerIcon,
+  ShoppingBasketIcon,
+  SparklesIcon,
   TextIcon,
+  TicketIcon,
   TrashIcon,
-  UserIcon,
 } from "@core-modules/ui-kit/icons";
 import { toast } from "@core-modules/ui-kit/sonner";
 import {
-  Badge,
   Button,
   Checkbox,
   DropdownMenu,
@@ -37,17 +37,15 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@core-modules/ui-kit/ui";
-import { run } from "@core-packages/effect";
 import { useCopyToClipboard } from "#/react/hooks/clipboard";
-import { day } from "#/utils/day";
 import { useState } from "react";
 
-type GetMembersColumnsProps = {
-  roleCounts: Record<Member["role"], number>;
+type GetTicketsColumnsProps = {
+  statusCount: Record<Ticket["status"], number>;
 };
 
-// This function is used to generate the columns for the members table.
-export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): ColumnDef<Member>[] => {
+// This function is used to generate the columns for the tickets table.
+export const getTicketsColumns = ({ statusCount }: GetTicketsColumnsProps): ColumnDef<Ticket>[] => {
   return [
     {
       id: "select",
@@ -72,109 +70,122 @@ export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): Colum
       enableHiding: false,
     },
     {
-      id: "email",
-      accessorKey: "email",
+      id: "label",
+      accessorKey: "label",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Email" />
+        <ColumnHeader column={column} title="Label" />
       ),
-      cell: ({ cell }) => {
-        const email = cell.getValue<string>();
-
-        return (
-          <p className="lowercase">{email}</p>
-        );
-      },
       meta: {
-        label: "Email",
-        placeholder: "Search by email...",
+        label: "Label",
+        placeholder: "Search by label...",
         variant: "text",
         icon: TextIcon,
       },
       enableColumnFilter: true,
     },
     {
-      id: "firstname",
-      accessorKey: "firstname",
+      id: "category",
+      accessorKey: "category",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Firstname" />
+        <ColumnHeader column={column} title="Category" />
       ),
-      enableSorting: false,
+      enableSorting: true,
       meta: {
-        label: "Firstname",
+        label: "Category",
       },
     },
     {
-      id: "lastname",
-      accessorKey: "lastname",
+      id: "amount",
+      accessorKey: "amount",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Lastname" />
-      ),
-      enableSorting: false,
-      meta: {
-        label: "Lastname",
-      },
-    },
-    {
-      id: "createdAt",
-      accessorKey: "createdAt",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Created at" />
-      ),
-      cell: ({ cell }) => day(cell.getValue<Date>()).format("ll"),
-      meta: {
-        label: "Created at",
-        variant: "dateRange",
-        icon: CalendarIcon,
-      },
-      enableColumnFilter: true,
-    },
-    {
-      id: "lastTimeConnected",
-      accessorKey: "lastTimeConnected",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Last time connected" />
-      ),
-      cell: ({ cell }) => day(cell.getValue<Date>()).format("lll"),
-      meta: {
-        label: "Last time connected",
-        variant: "dateRange",
-        icon: CalendarIcon,
-      },
-      enableColumnFilter: true,
-    },
-    {
-      id: "role",
-      accessorKey: "role",
-      header: ({ column }) => (
-        <ColumnHeader column={column} title="Role" />
+        <ColumnHeader column={column} title="Amount" />
       ),
       cell: ({ cell }) => {
-        const role = cell.getValue<string>();
+        const amount = cell.getValue();
 
         return (
-          <Badge variant="secondary" className="uppercase">
-            {run(() => {
-              if (role === "manager") {
-                return <ShieldIcon />;
-              }
-
-              return <EyeIcon />;
-            })}
+          <span>
+            {String(amount)}
 
             {" "}
 
-            {role}
-          </Badge>
+            €
+          </span>
+        );
+      },
+      enableSorting: true,
+      enableColumnFilter: true,
+      meta: {
+        variant: "range",
+        label: "Amount",
+      },
+    },
+    {
+      id: "capacity",
+      accessorKey: "capacity",
+      header: ({ column }) => (
+        <ColumnHeader column={column} title="Capacity" />
+      ),
+      meta: {
+        variant: "number",
+        unit: "qty",
+        label: "Capacity",
+      },
+      enableSorting: true,
+      enableColumnFilter: true,
+    },
+    {
+      id: "ticketsSold",
+      accessorKey: "ticketsSold",
+      header: ({ column }) => (
+        <ColumnHeader column={column} title="Tickets sold" />
+      ),
+      cell: ({ cell, row }) => {
+        const ticketsSold = cell.getValue();
+
+        const pourcentage = row.original.pourcentage;
+
+        return (
+          <span>
+            {String(ticketsSold)}
+
+            {" "}
+
+            (
+            {pourcentage}
+
+            {" "}
+
+            %)
+          </span>
         );
       },
       meta: {
-        label: "Role",
+        label: "Tickets sold",
+      },
+      enableSorting: true,
+    },
+    {
+      id: "status",
+      accessorKey: "status",
+      header: ({ column }) => (
+        <ColumnHeader column={column} title="Status" />
+      ),
+      cell: ({ cell }) => {
+        const status = cell.getValue<"coming-soon" | "in-sale" | "limited-stock" | "sold-out">();
+
+        return <StatusBadge status={status} />;
+      },
+      meta: {
+        label: "Status",
         variant: "select",
         options: [
-          { label: "Manager", value: "manager", count: roleCounts.manager, icon: ShieldIcon },
-          { label: "Viewer", value: "viewer", count: roleCounts.manager, icon: EyeIcon },
+          { label: "Coming soon", value: "coming-soon", count: statusCount["coming-soon"], icon: ClockIcon },
+          { label: "In sale", value: "in-sale", count: statusCount["in-sale"], icon: ShoppingBasketIcon },
+          { label: "Limited stock", value: "limited-stock", count: statusCount["limited-stock"], icon: FlameIcon },
+          { label: "Sold out", value: "sold-out", count: statusCount["sold-out"], icon: SparklesIcon },
         ],
-        icon: GraduationCapIcon,
+        icon: ServerIcon,
       },
       enableColumnFilter: true,
     },
@@ -190,23 +201,23 @@ export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): Colum
                 <Button size="sm" className="h-6 px-1!" onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
                   <AnimatedPlusIcon size={12} data-hovered={hovered} />
 
-                  <UserIcon size={16} />
+                  <TicketIcon size={16} />
                 </Button>
               </div>
             </TooltipTrigger>
 
             <TooltipContent>
-              Invite a new member
+              Create a new ticket
             </TooltipContent>
           </Tooltip>
         );
       },
       cell: function Cell({ row }) {
-        const firstname = row.getValue<string>("firstname");
+        const category = row.getValue<string>("category");
 
-        const lastname = row.getValue<string>("lastname");
+        const label = row.getValue<string>("label");
 
-        const role = row.getValue<string>("role");
+        const status = row.getValue<string>("status");
 
         const { copyToClipboard, isCopied } = useCopyToClipboard();
 
@@ -227,11 +238,13 @@ export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): Colum
 
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  {firstname}
+                  [
+                  {category}
+                  ]
 
                   {" "}
 
-                  {lastname}
+                  {label}
                 </DropdownMenuLabel>
 
                 <DropdownMenuSeparator />
@@ -250,19 +263,27 @@ export const getMembersColumns = ({ roleCounts }: GetMembersColumnsProps): Colum
 
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>
-                    <GraduationCap className="mr-2" />
+                    <ServerIcon className="mr-2" />
 
-                    Role
+                    Status
                   </DropdownMenuSubTrigger>
 
                   <DropdownMenuSubContent>
-                    <DropdownMenuRadioGroup value={role}>
-                      <DropdownMenuRadioItem value="manager" className="capitalize cursor-pointer">
-                        Manager
+                    <DropdownMenuRadioGroup value={status}>
+                      <DropdownMenuRadioItem value="coming-soon" className="capitalize cursor-pointer">
+                        Coming soon
                       </DropdownMenuRadioItem>
 
-                      <DropdownMenuRadioItem value="viewer" className="capitalize cursor-pointer">
-                        Viewer
+                      <DropdownMenuRadioItem value="in-sale" className="capitalize cursor-pointer">
+                        In sale
+                      </DropdownMenuRadioItem>
+
+                      <DropdownMenuRadioItem value="limited-stock" className="capitalize cursor-pointer">
+                        Limited stock
+                      </DropdownMenuRadioItem>
+
+                      <DropdownMenuRadioItem value="sold-out" className="capitalize cursor-pointer">
+                        Sold out
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                   </DropdownMenuSubContent>

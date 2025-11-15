@@ -4,6 +4,7 @@ import type { Component } from "@core-modules/ui-kit/utils";
 import { Members } from "./_components/members";
 import { Purchases } from "./_components/purchases";
 import { Settings } from "./_components/settings";
+import { Tickets } from "./_components/tickets";
 import { MenuIcon } from "@core-modules/ui-kit/icons";
 import { Button } from "@core-modules/ui-kit/ui";
 import { AdminSidebar } from "#/react/components/sidebar";
@@ -31,6 +32,8 @@ const Admin: Component = () => {
         {activeTab === AdminTabsType.Members && <Members />}
 
         {activeTab === AdminTabsType.Purchases && <Purchases />}
+
+        {activeTab === AdminTabsType.Tickets && <Tickets />}
       </div>
     </div>
   );

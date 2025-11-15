@@ -3,7 +3,7 @@
 import type { Purchase } from "./purchases-history.type";
 import type { ColumnDef } from "@tanstack/react-table";
 import { StatusBadge } from "./status-badge";
-import { AnimatedPlusIcon, ColumnHeader } from "@core-modules/ui-kit/components";
+import { ColumnHeader } from "@core-modules/ui-kit/components";
 import {
   CalendarIcon,
   CheckIcon,
@@ -11,28 +11,23 @@ import {
   CircleDashedIcon,
   CopyIcon,
   EllipsisIcon,
-  PenIcon,
   ServerIcon,
   TextIcon,
   TicketXIcon,
   TrashIcon,
-  UserIcon,
 } from "@core-modules/ui-kit/icons";
 import { toast } from "@core-modules/ui-kit/sonner";
 import {
   Button,
-  Checkbox,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  Tooltip,
 } from "@core-modules/ui-kit/ui";
 import { useCopyToClipboard } from "#/react/hooks/clipboard";
 import { day } from "#/utils/day";
-import { useState } from "react";
 
 type GetPurchasesColumnsProps = {
   statusCounts: Record<Purchase["status"], number>;
@@ -42,33 +37,16 @@ type GetPurchasesColumnsProps = {
 export const getPurchasesColumns = ({ statusCounts }: GetPurchasesColumnsProps): ColumnDef<Purchase>[] => {
   return [
     {
-      id: "select",
-      header: ({ table }) => (
-        <div className="flex items-center">
-          <Checkbox
-            checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-            onCheckedChange={(value) => table.toggleAllRowsSelected(Boolean(value))}
-          />
-        </div>
-      ),
-      cell: ({ row }) => (
-        <div className="flex items-center">
-          <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(Boolean(value))}
-            className="translate-y-0.5"
-          />
-        </div>
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
       id: "customer",
       accessorKey: "customer",
       header: ({ column }) => (
-        <ColumnHeader column={column} title="Customer" />
+        <ColumnHeader column={column} title="Customer" className="pl-4" />
       ),
+      cell: ({ cell }) => {
+        const customer = cell.getValue<string>();
+
+        return <span className="pl-4">{customer}</span>;
+      },
       meta: {
         label: "Customer",
       },
@@ -121,6 +99,19 @@ export const getPurchasesColumns = ({ statusCounts }: GetPurchasesColumnsProps):
       header: ({ column }) => (
         <ColumnHeader column={column} title="Amount" />
       ),
+      cell: ({ cell }) => {
+        const amount = cell.getValue();
+
+        return (
+          <span>
+            {String(amount)}
+
+            {" "}
+
+            €
+          </span>
+        );
+      },
       meta: {
         variant: "range",
         label: "Amount",
@@ -167,21 +158,6 @@ export const getPurchasesColumns = ({ statusCounts }: GetPurchasesColumnsProps):
     },
     {
       id: "actions",
-      header: function Header() {
-        const [hovered, setHovered] = useState<boolean>(false);
-
-        return (
-          <Tooltip>
-            <div className="flex items-center justify-center">
-              <Button size="sm" className="h-6 px-1!" onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}>
-                <AnimatedPlusIcon size={12} data-hovered={hovered} />
-
-                <UserIcon size={16} />
-              </Button>
-            </div>
-          </Tooltip>
-        );
-      },
       cell: function Cell({ row }) {
         const customer = row.getValue<string>("customer");
 
@@ -211,12 +187,6 @@ export const getPurchasesColumns = ({ statusCounts }: GetPurchasesColumnsProps):
                   {isCopied ? <CheckIcon /> : <CopyIcon />}
 
                   Copy ID
-                </DropdownMenuItem>
-
-                <DropdownMenuItem>
-                  <PenIcon />
-
-                  Edit
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator />
