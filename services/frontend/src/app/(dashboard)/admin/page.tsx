@@ -5,6 +5,7 @@ import { Members } from "./_components/members";
 import { Purchases } from "./_components/purchases";
 import { Settings } from "./_components/settings";
 import { Tickets } from "./_components/tickets";
+import { TicketsCategories } from "./_components/tickets-categories";
 import { MenuIcon } from "@core-modules/ui-kit/icons";
 import { Button } from "@core-modules/ui-kit/ui";
 import { AdminSidebar } from "#/react/components/sidebar";
@@ -34,6 +35,8 @@ const Admin: Component = () => {
         {activeTab === AdminTabsType.Purchases && <Purchases />}
 
         {activeTab === AdminTabsType.Tickets && <Tickets />}
+
+        {activeTab === AdminTabsType.TicketCategories && <TicketsCategories />}
       </div>
     </div>
   );
